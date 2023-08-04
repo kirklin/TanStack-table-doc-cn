@@ -2,7 +2,7 @@
 title: ColumnDef
 ---
 
-Column definitions是一个包含以下选项的普通对象：
+Column definitions 是一个包含以下选项的普通对象：
 
 ## 选项
 
@@ -14,7 +14,7 @@ id: string
 
 列的唯一标识符。
 
-> 🧠 当：
+> 🧠 在下列情况下，列 ID 是可选的：
 >
 > - 使用对象键访问器创建访问器列
 > - 列标题定义为字符串时，列ID是可选的
