@@ -1,12 +1,12 @@
 ---
-title: Vanilla TS/JS
+title: 原生 TS/JS
 ---
 
-The `@tanstack/table-core` library contains the core logic for TanStack Table. If you are using a non-standard framework or don't have access to a framework, you can use the core library directly via TypeScript or JavaScript.
+`@tanstack/table-core`库包含了TanStack Table的核心逻辑。如果你正在使用非标准的框架或者没有框架的访问权限，你可以直接使用核心库来进行TypeScript或JavaScript开发。
 
 ## `createTable`
 
-Takes an `options` object and returns a table.
+接受一个`options`对象，并返回一个表格。
 
 ```tsx
 import { createTable } from '@tanstack/table-core'

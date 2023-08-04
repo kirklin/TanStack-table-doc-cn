@@ -1,16 +1,16 @@
 ---
-title: Vue Table
+title: Vue 表格
 ---
 
-The `@tanstack/vue-table` adapter is a wrapper around the core table logic. Most of it's job is related to managing state the "vue" way, providing types and the rendering implementation of cell/header/footer templates.
+`@tanstack/vue-table` 适配器是核心表格逻辑的包装器。它的大部分工作与以 "vue" 的方式管理状态、提供类型以及渲染单元格/表头/表尾模板相关。
 
-## Exports
+## 导出
 
-`@tanstack/vue-table` re-exports all of `@tanstack/table-core`'s and the following:
+`@tanstack/vue-table` 重新导出了 `@tanstack/table-core` 的所有内容以及以下内容：
 
 ### `useVueTable`
 
-Takes an `options` object and returns a table.
+接受一个 `options` 对象并返回一个表格。
 
 ```tsx
 import { useVueTable } from '@tanstack/vue-table'
@@ -18,15 +18,15 @@ import { useVueTable } from '@tanstack/vue-table'
 function App() {
   const table = useVueTable(options)
 
-  // ...render your table
+  // ...渲染你的表格
 }
 ```
 
 ### `FlexRender`
 
-A Vue component for rendering cell/header/footer templates with dynamic values.
+用于渲染带有动态值的单元格/表头/表尾模板的 Vue 组件。
 
-Example:
+示例：
 
 ```vue
 import { FlexRender } from '@tanstack/vue-table'

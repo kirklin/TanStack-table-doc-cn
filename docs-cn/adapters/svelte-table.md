@@ -1,12 +1,12 @@
 ---
-title: Svelte Table
+title: Svelte 表格
 ---
 
-The `@tanstack/svelte-table` adapter is a wrapper around the core table logic. Most of it's job is related to managing state the "svelte" way, providing types and the rendering implementation of cell/header/footer templates.
+`@tanstack/svelte-table` 适配器是核心表格逻辑的包装器。它的大部分工作与以 "svelte" 方式管理状态、提供类型以及渲染单元格/表头/表尾模板相关。
 
 ## `createSvelteTable`
 
-Takes an `options` object and returns a table.
+接受一个 `options` 对象，并返回一个表格。
 
 ```svelte
 <script>
