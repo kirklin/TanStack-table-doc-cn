@@ -1,25 +1,25 @@
 ---
-title: Migrating to V8
+title: 迁移到V8版本
 ---
 
-## Migrating to V8
+## 迁移到V8版本
 
-TanStack Table V8 was a major rewrite of React Table v7 from the ground up in TypeScript. The overall structure/organization of your markup and CSS will largely remain the same, but many of the APIs have been renamed or replaced.
+TanStack Table V8是React Table v7的一次重大重写，完全采用TypeScript编写。您的标记和CSS的整体结构/组织大部分保持不变，但许多API已被重命名或替换。
 
-### Notable Changes
+### 主要变化
 
-- Full rewrite to TypeScript with types included in the base package
-- Removal of plugin system to favor more inversion of control
-- Vastly larger and improved API (and new features like pinning)
-- Better controlled state management
-- Better support for server-side operations
-- Complete (but optional) data pipeline control
-- Agnostic core with framework adapters for React, Solid, Svelte, Vue, and potentially more in the future
-- New Dev Tools
+- 完全重写为TypeScript，并将类型包含在基础包中
+- 删除插件系统，更倾向于更多的控制反转
+- 大幅增加和改进的API（以及新功能，如固定）
+- 更好的受控状态管理
+- 更好地支持服务器端操作
+- 完整（但可选）的数据管道控制
+- 通用核心，为React、Solid、Svelte、Vue等框架提供适配器，并可能在将来提供更多适配器
+- 新的开发者工具
 
-### Install the new Version
+### 安装新版本
 
-The new version of TanStack Table is published under the `@tanstack` scope. Install the new package using your favorite package manager:
+TanStack Table的新版本发布在`@tanstack`作用域下。使用您喜欢的包管理器安装新包：
 
 ```bash
 npm uninstall react-table @types/react-table
@@ -31,14 +31,14 @@ npm install @tanstack/react-table
 + import { useReactTable } from '@tanstack/react-table'
 ```
 
-Types are now included in the base package, so you can remove the `@types/react-table` package.
+类型现在包含在基础包中，因此您可以删除`@types/react-table`包。
 
-> If you want, you can keep the old `react-table` packages installed so that you can gradually migrate your code. You should be able to use both packages side-by-side for separate tables without any issues.
+> 如果您愿意，可以保留旧的`react-table`包安装，以便逐步迁移代码。您应该能够在不同的表格中同时使用这两个包而没有任何问题。
 
-### Update Table Options
+### 更新表格选项
 
-- Rename `useTable` to `useReactTable`
-- The old hook and plugin systems have been removed, but they have replaced with tree-shakable row model imports for each feature.
+- 将`useTable`重命名为`useReactTable`
+- 删除了旧的hook和插件系统，但它们已被替换为每个功能的可树摇动行模型导入。
 
 ```diff
 - import { useTable, usePagination, useSortBy } from 'react-table';
@@ -54,29 +54,29 @@ Types are now included in the base package, so you can remove the `@types/react-
 -   const tableInstance = useTable(
 -     { columns,  data },
 -     useSortBy,
--     usePagination, //order of hooks used to matter
--     // etc.
+-     usePagination, //hook的顺序很重要
+-     // 等等
 -   );
 +   const tableInstance = useReactTable({
 +     columns,
 +     data,
 +     getCoreRowModel: getCoreRowModel(),
 +     getPaginationRowModel: getPaginationRowModel(),
-+     getSortedRowModel: getSortedRowModel(), //order doesn't matter anymore!
-+     // etc.
++     getSortedRowModel: getSortedRowModel(), //hook的顺序不再重要！
++     // 等等
 +   });
 ```
 
-- All `disable*` table options were renamed to `enable*` table options. (e.g. `disableSortBy` is now `enableSorting`, `disableGroupBy` is now `enableGrouping`, etc.)
+- 所有`disable*`表格选项已重命名为`enable*`表格选项（例如，`disableSortBy`现在是`enableSorting`，`disableGroupBy`现在是`enableGrouping`等）。
 - ...
 
-### Update column definitions
+### 更新列定义
 
-- accessor was renamed to either `accessorKey` or `accessorFn` (depending on whether you are using a string or function)
-- width, minWidth, maxWidth where renamed to size, minSize, maxSize
-- Optionally, you can use the new `createColumnHelper` function around each column definition for better TypeScript hints. (You can still just use an array of column definitions if you prefer.)
-  - The first parameter is the accessor function or accessor string.
-  - The second parameter is an object of column options.
+- `accessor`被重命名为`accessorKey`或`accessorFn`（取决于您是使用字符串还是函数）
+- `width`、`minWidth`、`maxWidth`被重命名为`size`、`minSize`、`maxSize`
+- 可选地，您可以在每个列定义周围使用新的`createColumnHelper`函数，以获得更好的TypeScript提示（如果您喜欢，仍然可以只使用列定义的数组）。
+  - 第一个参数是访问器函数或访问器字符串。
+  - 第二个参数是列选项的对象。
 
 ```diff
 const columns = [
@@ -89,7 +89,7 @@ const columns = [
 -    Header: () => <span>Last Name</span>,
 -  },
 
-// Best TypeScript experience, especially when using `cell.getValue()` later on
+// 最佳的TypeScript体验，特别是在稍后使用`cell.getValue()`时
 +  columnHelper.accessor('firstName', { //accessorKey
 +    header: 'First Name',
 +  }),
@@ -97,7 +97,7 @@ const columns = [
 +    header: () => <span>Last Name</span>,
 +  }),
 
-// OR (if you prefer)
+// 或者（如果您喜欢）
 + {
 +   accessorKey: 'firstName',
 +   header: 'First Name',
@@ -109,32 +109,32 @@ const columns = [
 ]
 ```
 
-> Note: If defining columns inside a component, you should still try to give the column definitions a stable identity. This will help with performance and prevent unnecessary re-renders. Store the column definitions in either a `useMemo` or `useState` hook.
+> 注意：如果在组件内定义列，请仍然尽量给列定义一个稳定的标识。这将有助于性能并防止不必要的重新渲染。将列定义存储在`useMemo`或`useState` hook中。
 
-- Column Option Name Changes
+- 列选项名称更改
 
-  - `Header` was renamed to `header`
-  - `Cell` was renamed to `cell` (The cell render function has also changed. See below)
-  - `Footer` was renamed to `footer`
-  - All `disable*` column options were renamed to `enable*` column options. (e.g. `disableSortBy` is now `enableSorting`, `disableGroupBy` is now `enableGrouping`, etc.)
-  - `sortType` `sortingFn`
+  - `Header`被重命名为`header`
+  - `Cell`被重命名为`cell`（单元格渲染函数也已更改，请参见下文）
+  - `Footer`被重命名为`footer`
+  - 所有`disable*`列选项已重命名为`enable*`列选项（例如，`disableSortBy`现在是`enableSorting`，`disableGroupBy`现在是`enableGrouping`等）。
+  - `sortType`是`sortingFn`
   - ...
 
-- Changes to custom cell renderers
+- 自定义单元格渲染器的更改
 
-  - `value` was renamed `getValue` (Throughout the upgrade, instead of providing the value directly, a function `getValue` is exposed for evaluating the value. This change aims to improve performance by evaluating the value only when `getValue()` is called and then caching it.)
-  - `cell: { isGrouped, isPlaceholder, isAggregated }` is now `cell: { getIsGrouped, getIsPlaceholder, getIsAggregated }`
-  - `column`: The base level props are now RT-specific. Values that you added to the object when defining it are now one level deeper in `columnDef`.
-  - `table`: Props passed into the `useTable` hook now appear under `options`.
+  - `value`被重命名为`getValue`（在升级过程中，不再直接提供值，而是提供了一个函数`getValue`来评估值。此更改旨在通过仅在调用`getValue()`时评估值并缓存它来提高性能。）
+  - `cell: { isGrouped, isPlaceholder, isAggregated }`现在是`cell: { getIsGrouped, getIsPlaceholder, getIsAggregated }`
+  - `column`：基本级别的props现在是RT特定的。在定义时添加到对象中的值现在在`columnDef`中更深一层。
+  - `table`：传递给`useTable` hook的props现在出现在`options`下。
 
-### Migrate Table Markup
+### 迁移表格标记
 
-- Use `flexRender()` instead of `cell.render('Cell')` or `column.render('Header')`, etc.
-- `getHeaderProps`, `getFooterProps`, `getCellProps`, `getRowProps`, etc. have all been _deprecated_.
-  - TanStack Table does not provide any default `style` or accessibility attributes like `role` anymore. These are still important for you to get right, but it had to be removed in order to support being framework-agnostic.
-  - You will need to define `onClick` handlers manually, but there are new `get*Handler` helpers to keep this simple.
-  - You will need to define the `key` props manually
-  - You will need to define the `colSpan` prop manually if using features that require it (grouped headers, aggregation, etc.)
+- 使用`flexRender()`代替`cell.render('Cell')`或`column.render('Header')`等。
+- `getHeaderProps`、`getFooterProps`、`getCellProps`、`getRowProps`等都已被_弃用_。
+  - TanStack Table不再提供任何默认的`style`或可访问性属性，如`role`。这些仍然对您的正确性很重要，但为了支持框架无关性，必须将其删除。
+  - 您需要手动定义`onClick`处理程序，但有新的`get*Handler`辅助函数可以使此过程简单。
+  - 您需要手动定义`key` props
+  - 如果使用需要它的功能（分组标题、聚合等），您需要手动定义`colSpan` prop。
 
 ```diff
 - <th {...header.getHeaderProps()}>{cell.render('Header')}</th>
@@ -157,7 +157,7 @@ const columns = [
 ```
 
 ```diff
-// in column definitions in this case
+// 在此示例中的列定义中
 - Header: ({ getToggleAllRowsSelectedProps }) => (
 -   <input type="checkbox" {...getToggleAllRowsSelectedProps()} />
 - ),
@@ -181,9 +181,9 @@ const columns = [
 + ),
 ```
 
-### Other Changes
+### 其他更改
 
-- custom `filterTypes` (now called `filterFns`) have a new function signature as it only returns a boolean for whether the row should be included or not.
+- 自定义`filterTypes`（现在称为`filterFns`）的函数签名已更改，因为它只返回一个布尔值，表示是否应包含该行。
 
 ```diff
 - (rows: Row[], id: string, filterValue: any) => Row[]
@@ -192,4 +192,4 @@ const columns = [
 
 - ...
 
-> This guide is a work in progress. Please consider contributing to it if you have time!
+> 此指南仍在进行中。如果您有时间，请考虑为其做出贡献！

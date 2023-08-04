@@ -1,39 +1,39 @@
 ---
-title: Columns
+title: 列
 ---
 
 ## API
 
-[Table API](../api/core/table)
+[表格 API](../api/core/table)
 
-## Guide
+## 指南
 
-Column defs are the single most important part of building a table. They are responsible for:
+列定义是构建表格的最重要部分。它们负责以下任务：
 
-- Building the underlying data model that will be used for everything including sorting, filtering, grouping, etc.
-- Formatting the data model into what will be displayed in the table
-- Creating [header groups](./api/core/header-group), [headers](./api/core/header) and [footers](./api/core/column-def#footer)
-- Creating columns for display-only purposes, eg. action buttons, checkboxes, expanders, sparklines, etc.
+- 构建底层数据模型，用于排序、过滤、分组等操作。
+- 将数据模型格式化为表格中显示的内容。
+- 创建[表头组](./api/core/header-group)、[表头](./api/core/header)和[表尾](./api/core/column-def#footer)。
+- 创建仅用于显示的列，例如操作按钮、复选框、展开器、小型图表等。
 
-## Column Def Types
+## 列定义类型
 
-The following "types" of column defs aren't actually TypeScript types, but more so a way to talk about and describe overall categories of column defs:
+以下列定义的“类型”实际上不是 TypeScript 类型，而是一种描述列定义整体类别的方式：
 
-- `Accessor Columns`
-  - Accessor columns have an underlying data model which means they can be sorted, filtered, grouped, etc.
-- `Display Columns`
-  - Display columns do **not** have a data model which means they cannot be sorted, filtered, etc, but they can be used to display arbitrary content in the table, eg. a row actions button, checkbox, expander, etc.
-- `Grouping Columns`
-  - Group columns do **not** have a data model so they too cannot be sorted, filtered, etc, and are used to group other columns together. It's common to define a header or footer for a column group.
+- `“访问器列” Accessor Columns`
+  - 访问器列具有底层数据模型，因此可以进行排序、过滤、分组等操作。
+- `“显示列” Display Columns`
+  - 显示列没有数据模型，因此无法进行排序、过滤等操作，但可以用于在表格中显示任意内容，例如行操作按钮、复选框、展开器等。
+- `“分组列 Grouping Columns”`
+  - 分组列没有数据模型，因此也无法进行排序、过滤等操作，它们用于将其他列分组在一起。通常为列组定义表头或表尾。
 
-## Column Helpers
+## 列助手
 
-While column defs are just plain objects at the end of the day, a `createColumnHelper` function is exposed from the table core which, when called with a row type, returns a utility for creating different column definition types with the highest type-safety possible.
+虽然列定义实际上只是普通的对象，但表格核心库提供了一个`createColumnHelper`函数，该函数在调用时传入行类型，返回一个具有最高类型安全性的创建不同列定义类型的实用程序。
 
-Here's an example of creating and using a column helper:
+下面是创建和使用列助手的示例：
 
 ```tsx
-// Define your row shape
+// 定义行的形状
 type Person = {
   firstName: string
   lastName: string
@@ -45,24 +45,24 @@ type Person = {
 
 const columnHelper = createColumnHelper<Person>()
 
-// Make some columns!
+// 创建一些列！
 const defaultColumns = [
-  // Display Column
+  // 显示列
   columnHelper.display({
     id: 'actions',
     cell: props => <RowActions row={props.row} />,
   }),
-  // Grouping Column
+  // 分组列
   columnHelper.group({
     header: 'Name',
     footer: props => props.column.id,
     columns: [
-      // Accessor Column
+      // 访问器列
       columnHelper.accessor('firstName', {
         cell: info => info.getValue(),
         footer: props => props.column.id,
       }),
-      // Accessor Column
+      // 访问器列
       columnHelper.accessor(row => row.lastName, {
         id: 'lastName',
         cell: info => info.getValue(),
@@ -71,31 +71,31 @@ const defaultColumns = [
       }),
     ],
   }),
-  // Grouping Column
+  // 分组列
   columnHelper.group({
     header: 'Info',
     footer: props => props.column.id,
     columns: [
-      // Accessor Column
+      // 访问器列
       columnHelper.accessor('age', {
         header: () => 'Age',
         footer: props => props.column.id,
       }),
-      // Grouping Column
+      // 分组列
       columnHelper.group({
         header: 'More Info',
         columns: [
-          // Accessor Column
+          // 访问器列
           columnHelper.accessor('visits', {
             header: () => <span>Visits</span>,
             footer: props => props.column.id,
           }),
-          // Accessor Column
+          // 访问器列
           columnHelper.accessor('status', {
             header: 'Status',
             footer: props => props.column.id,
           }),
-          // Accessor Column
+          // 访问器列
           columnHelper.accessor('progress', {
             header: 'Profile Progress',
             footer: props => props.column.id,
@@ -107,19 +107,19 @@ const defaultColumns = [
 ]
 ```
 
-## Creating Accessor Columns
+## 创建访问器列
 
-Data columns are unique in that they must be configured to extract primitive values for each item in your `data` array.
+数据列的独特之处在于必须配置以提取`data`数组中每个项的原始值。
 
-There are 3 ways to do this:
+有三种方法可以实现这一点：
 
-- If your items are `objects`, use an object-key that corresponds to the value you want to extract.
-- If your items are nested `arrays`, use an array index that corresponds to the value you want to extract.
-- Use an accessor function that returns the value you want to extract.
+- 如果您的项是`对象`，请使用与要提取的值对应的对象键。
+- 如果您的项是嵌套的`数组`，请使用与要提取的值对应的数组索引。
+- 使用返回要提取的值的访问器函数。
 
-## Object Keys
+## 对象键
 
-If each of your items is an object with the following shape:
+如果每个项都是具有以下形状的对象：
 
 ```tsx
 type Person = {
@@ -132,42 +132,42 @@ type Person = {
 }
 ```
 
-You could extract the `firstName` value like so:
+您可以像这样提取`firstName`值：
 
 ```tsx
 
 columnHelper.accessor('firstName')
 
-// OR
+// 或者
 
 {
   accessorKey: 'firstName',
 }
 ```
 
-## Array Indices
+## 数组索引
 
-If each of your items is an array with the following shape:
+如果每个项都是具有以下形状的数组：
 
 ```tsx
 type Sales = [Date, number]
 ```
 
-You could extract the `number` value like so:
+您可以像这样提取`number`值：
 
 ```tsx
 columnHelper.accessor(1)
 
-// OR
+// 或者
 
 {
   accessorKey: 1,
 }
 ```
 
-## Accessor Functions
+## 访问器函数
 
-If each of your items is an object with the following shape:
+如果每个项都是具有以下形状的对象：
 
 ```tsx
 type Person = {
@@ -180,14 +180,14 @@ type Person = {
 }
 ```
 
-You could extract a computed full-name value like so:
+您可以像这样提取计算得到的全名值：
 
 ```tsx
 columnHelper.accessor(row => `${row.firstName} ${row.lastName}`, {
   id: 'fullName',
 })
 
-// OR
+// 或者
 
 {
   id: 'fullName',
@@ -195,33 +195,33 @@ columnHelper.accessor(row => `${row.firstName} ${row.lastName}`, {
 }
 ```
 
-> 🧠 Remember, the accessed value is what is used to sort, filter, etc. so you'll want to make sure your accessor function returns a primitive value that can be manipulated in a meaningful way. If you return a non-primitive value like an object or array, you will need the appropriate filter/sort/grouping functions to manipulate them, or even supply your own! 😬
+> 🧠 请记住，访问的值是用于排序、过滤等操作的值，因此您需要确保访问器函数返回一个可以进行有意义操作的原始值。如果返回的是非原始值，例如对象或数组，您将需要适当的过滤/排序/分组函数来操作它们，甚至可以自己提供！ 😬
 
-## Unique Column IDs
+## 唯一的列 ID
 
-Columns are uniquely identified with 3 strategies:
+列使用三种策略进行唯一标识：
 
-- If defining an accessor column with an object key or array index, the same will be used to uniquely identify the column.
-- If defining an accessor column with an accessor function
-  - The columns `id` property will be used to uniquely identify the column OR
-  - If a primitive `string` header is supplied, that header string will be used to uniquely identify the column
+- 如果使用对象键或数组索引定义访问器列，将使用相同的键或索引来唯一标识列。
+- 如果使用访问器函数定义访问器列
+  - 将使用列的`id`属性来唯一标识列，或者
+  - 如果提供了原始的`string`表头，将使用该表头字符串来唯一标识列
 
-> 🧠 An easy way to remember: If you define a column with an accessor function, either provide a string header or provide a unique `id` property.
+> 🧠 一个简单的记忆方法：如果使用访问器函数定义列，请提供一个字符串表头或提供一个唯一的`id`属性。
 
-## Column Formatting & Rendering
+## 列格式化和渲染
 
-By default, columns cells will display their data model value as a string. You can override this behavior by providing custom rendering implementations. Each implementation is provided relevant information about the cell, header or footer and returns something your framework adapter can render eg. JSX/Components/strings/etc. This will depend on which adapter you are using.
+默认情况下，列单元格将以字符串形式显示其数据模型值。您可以通过提供自定义的渲染实现来覆盖此行为。每个实现都会提供有关单元格、表头或表尾的相关信息，并返回您的框架适配器可以渲染的内容，例如 JSX/组件/字符串等。这将取决于您使用的适配器。
 
-There are a couple of formatters available to you:
+您可以使用以下几种格式化程序：
 
-- `cell`: Used for formatting cells.
-- `aggregatedCell`: Used for formatting cells when aggregated.
-- `header`: Used for formatting headers.
-- `footer`: Used for formatting footers.
+- `cell`：用于格式化单元格。
+- `aggregatedCell`：用于格式化聚合单元格。
+- `header`：用于格式化表头。
+- `footer`：用于格式化表尾。
 
-## Cell Formatting
+## 单元格格式化
 
-You can provide a custom cell formatter by passing a function to the `cell` property and using the `props.getValue()` function to access your cell's value:
+您可以通过将函数传递给`cell`属性，并使用`props.getValue()`函数访问单元格的值，来提供自定义的单元格格式化程序：
 
 ```tsx
 columnHelper.accessor('firstName', {
@@ -229,7 +229,7 @@ columnHelper.accessor('firstName', {
 })
 ```
 
-Cell formatters are also provided the `row` and `table` objects, allowing you to customize the cell formatting beyond just the cell value. The example below provides `firstName` as the accessor, but also displays a prefixed user ID located on the original row object:
+单元格格式化程序还会提供`row`和`table`对象，使您能够在单元格值之外自定义单元格格式化。下面的示例将`firstName`作为访问器，但还显示了原始行对象上的前缀用户 ID：
 
 ```tsx
 columnHelper.accessor('firstName', {
@@ -239,10 +239,10 @@ columnHelper.accessor('firstName', {
 })
 ```
 
-## Aggregated Cell Formatting
+## 聚合单元格格式化
 
-For more info on aggregated cells, see [grouping](../guide/grouping).
+有关聚合单元格的更多信息，请参见[分组](../guide/grouping)。
 
-## Header & Footer Formatting
+## 表头和表尾格式化
 
-Headers and footers do not have access to row data, but still use the same concepts for displaying custom content.
+表头和表尾无法访问行数据，但仍然使用相同的概念来显示自定义内容。

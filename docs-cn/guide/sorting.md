@@ -1,10 +1,10 @@
 ---
-title: Sorting
+title: 排序
 ---
 
-## Examples
+## 示例
 
-Want to skip to the implementation? Check out these examples:
+想要直接查看实现代码？请查看以下示例：
 
 - [sorting](../examples/react/sorting)
 - [filters](../examples/react/filters)

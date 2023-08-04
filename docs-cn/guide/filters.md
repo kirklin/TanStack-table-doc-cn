@@ -1,29 +1,29 @@
 ---
-title: Filters
+title: 过滤器
 ---
 
-## Examples
+## 示例
 
-Want to skip to the implementation? Check out these examples:
+想要直接查看实现代码？请查看以下示例：
 
-- [filters](../examples/react/filters) (includes faceting)
-- [editable-data](../examples/react/editable-data)
-- [expanding](../examples/react/expanding)
-- [grouping](../examples/react/grouping)
-- [pagination](../examples/react/pagination)
-- [row-selection](../examples/react/row-selection)
+- [过滤器](../examples/react/filters)（包括分面）
+- [可编辑数据](../examples/react/editable-data)
+- [展开](../examples/react/expanding)
+- [分组](../examples/react/grouping)
+- [分页](../examples/react/pagination)
+- [行选择](../examples/react/row-selection)
 
 ## API
 
-[Filters API](../api/features/filters)
+[过滤器 API](../api/features/filters)
 
-## Overview
+## 概述
 
-Filters come in two flavors:
+过滤器有两种类型：
 
-- Column filters
-  - A filter that is applied to a single column's accessor value.
-  - Stored in the `state.columnFilters` array as an object containing the columnId and the filter value.
-- Global filters
-  - A single filter value that is applied to all or some of columns' accessor values.
-  - Stored in the `state.globalFilter` array as any value, usually a string.
+- 列过滤器
+  - 应用于单个列的访问器值的过滤器。
+  - 存储在 `state.columnFilters` 数组中，作为包含列ID和过滤器值的对象。
+- 全局过滤器
+  - 应用于所有或部分列的访问器值的单个过滤器值。
+  - 存储在 `state.globalFilter` 数组中，通常是一个字符串。

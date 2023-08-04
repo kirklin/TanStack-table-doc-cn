@@ -1,16 +1,16 @@
 ---
-title: Features
+title: 特性
 ---
 
-React Table comes with many features, each with their own associated options and API:
+React Table具有许多功能，每个功能都有其自己的选项和API：
 
-- [Column Visibility](./guide/column-visibility)
-- [Column Ordering](./guide/column-ordering)
-- [Column Pinning](./guide/column-pinning)
-- [Column Sizing](./guide/column-sizing)
-- [Filters](./guide/filters)
-- [Sorting](./guide/sorting)
-- [Grouping](./guide/grouping)
-- [Expanding](./guide/expanding)
-- [Row Selection](./guide/row-selection)
-- [Pagination](./guide/pagination)
+- [列可见性](./guide/column-visibility)
+- [列排序](./guide/column-ordering)
+- [列固定](./guide/column-pinning)
+- [列大小调整](./guide/column-sizing)
+- [过滤器](./guide/filters)
+- [排序](./guide/sorting)
+- [分组](./guide/grouping)
+- [展开](./guide/expanding)
+- [行选择](./guide/row-selection)
+- [分页](./guide/pagination)

@@ -1,10 +1,10 @@
 ---
-title: Column Visibility
+title: 列可见性
 ---
 
-## Examples
+## 示例
 
-Want to skip to the implementation? Check out these examples:
+想要直接查看实现代码？请查看以下示例：
 
 - [column-visibility](../examples/react/column-visibility)
 - [column-ordering](../examples/react/column-ordering)

@@ -1,10 +1,10 @@
 ---
-title: Row Selection
+title: 行选择
 ---
 
-## Examples
+## 示例
 
-Want to skip to the implementation? Check out these examples:
+想要直接查看实现代码？请查看以下示例：
 
 - [row-selection](../examples/react/row-selection)
 - [expanding](../examples/react/expanding)
