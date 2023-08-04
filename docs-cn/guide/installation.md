@@ -1,36 +1,36 @@
 ---
-title: Installation
+title: 安装
 ---
 
-Before we dig in to the API, let's get you set up!
+在我们深入了解API之前，让我们先进行设置！
 
-Install your table adapter as a dependency using your favorite npm package manager
+使用您喜欢的npm包管理器将表格适配器安装为依赖项
 
-## React Table
+## React表格
 
 ```bash
 $ npm install @tanstack/react-table
 ```
 
-## Solid Table
+## Solid表格
 
 ```bash
 $ npm install @tanstack/solid-table
 ```
 
-## Svelte Table
+## Svelte表格
 
 ```bash
 $ npm install @tanstack/svelte-table
 ```
 
-## Vue Table
+## Vue表格
 
 ```bash
 $ npm install @tanstack/vue-table
 ```
 
-## Table Core (no framework)
+## 表格核心（无框架）
 
 ```bash
 $ npm install @tanstack/table-core
