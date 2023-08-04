@@ -2,11 +2,11 @@
 title: Column
 ---
 
-These are **core** options and API properties for all columns. More options and API properties are available for other [table features](../../guide/features).
+注意：这是关于所有列的核心选项和API属性的文档。其他[表格功能](../../guide/features)还提供了更多选项和API属性。
 
-## Column API
+## 列API
 
-All column objects have the following properties:
+所有列对象都具有以下属性：
 
 ### `id`
 
@@ -14,11 +14,11 @@ All column objects have the following properties:
 id: string
 ```
 
-The resolved unique identifier for the column resolved in this priority:
+列的唯一标识符，按照以下优先级解析：
 
-- A manual `id` property from the column def
-- The accessor key from the column def
-- The header string from the column def
+- 列定义中的手动`id`属性
+- 列定义中的访问器键
+- 列定义中的标题字符串
 
 ### `depth`
 
@@ -26,7 +26,7 @@ The resolved unique identifier for the column resolved in this priority:
 depth: number
 ```
 
-The depth of the column (if grouped) relative to the root column def array.
+列的深度（如果分组）相对于根列定义数组。
 
 ### `accessorFn`
 
@@ -34,7 +34,7 @@ The depth of the column (if grouped) relative to the root column def array.
 accessorFn?: AccessorFn<TData>
 ```
 
-The resolved accessor function to use when extracting the value for the column from each row. Will only be defined if the column def has a valid accessor key or function defined.
+从每行中提取列的值时要使用的解析访问器函数。仅在列定义具有有效的访问器键或函数定义时才定义。
 
 ### `columnDef`
 
@@ -42,7 +42,7 @@ The resolved accessor function to use when extracting the value for the column f
 columnDef: ColumnDef<TData>
 ```
 
-The original column def used to create the column.
+用于创建列的原始列定义。
 
 ### `columns`
 
@@ -50,7 +50,7 @@ The original column def used to create the column.
 type columns = ColumnDef<TData>[]
 ```
 
-The child column (if the column is a group column). Will be an empty array if the column is not a group column.
+子列（如果列是分组列）。如果列不是分组列，则为空数组。
 
 ### `parent`
 
@@ -58,7 +58,7 @@ The child column (if the column is a group column). Will be an empty array if th
 parent?: Column<TData>
 ```
 
-The parent column for this column. Will be undefined if this is a root column.
+此列的父列。如果这是根列，则为未定义。
 
 ### `getFlatColumns`
 
@@ -66,7 +66,7 @@ The parent column for this column. Will be undefined if this is a root column.
 type getFlatColumns = () => Column<TData>[]
 ```
 
-Returns the flattened array of this column and all child/grand-child columns for this column.
+返回此列及其所有子/孙子列的扁平化数组。
 
 ### `getLeafColumns`
 
@@ -74,4 +74,4 @@ Returns the flattened array of this column and all child/grand-child columns for
 type getLeafColumns = () => Column<TData>[]
 ```
 
-Returns an array of all leaf-node columns for this column. If a column has no children, it is considered the only leaf-node column.
+返回此列的所有叶节点列的数组。如果列没有子列，则被视为唯一的叶节点列。

@@ -2,11 +2,11 @@
 title: Row
 ---
 
-These are **core** options and API properties for all rows. More options and API properties are available for other [table features](../../guide/features).
+注意：这是关于所有行的核心选项和API属性。其他[表格功能](../../guide/features)还提供了更多选项和API属性。
 
-## Row API
+## 行API
 
-All row objects have the following properties:
+所有行对象都具有以下属性：
 
 ### `id`
 
@@ -14,7 +14,7 @@ All row objects have the following properties:
 id: string
 ```
 
-The resolved unique identifier for the row resolved via the `options.getRowId` option. Defaults to the row's index (or relative index if it is a subRow)
+通过`options.getRowId`选项解析的行的唯一标识符。默认为行的索引（如果是子行，则为相对索引）。
 
 ### `depth`
 
@@ -22,7 +22,7 @@ The resolved unique identifier for the row resolved via the `options.getRowId` o
 depth: number
 ```
 
-The depth of the row (if nested or grouped) relative to the root row array.
+行的深度（如果是嵌套或分组的）相对于根行数组。
 
 ### `index`
 
@@ -30,7 +30,7 @@ The depth of the row (if nested or grouped) relative to the root row array.
 index: number
 ```
 
-The index of the row within its parent array (or the root data array)
+行在其父数组中的索引（或根数据数组中的索引）。
 
 ### `original`
 
@@ -38,9 +38,9 @@ The index of the row within its parent array (or the root data array)
 original: TData
 ```
 
-The original row object provided to the table.
+提供给表格的原始行对象。
 
-> 🧠 If the row is a grouped row, the original row object will be the first original in the group.
+> 🧠 如果行是分组行，则原始行对象将是组中的第一个原始行。
 
 ### `parentId`
 
@@ -48,7 +48,7 @@ The original row object provided to the table.
 parentId?: string
 ```
 
-If nested, this row's parent row id.
+如果是嵌套的，则为该行的父行id。
 
 ### `getValue`
 
@@ -56,7 +56,7 @@ If nested, this row's parent row id.
 getValue: (columnId: string) => any
 ```
 
-Returns the value from the row for a given columnId
+返回给定columnId的行的值。
 
 ### `subRows`
 
@@ -64,7 +64,7 @@ Returns the value from the row for a given columnId
 type subRows = Row<TData>[]
 ```
 
-An array of subRows for the row as returned and created by the `options.getSubRows` option.
+作为`options.getSubRows`选项返回和创建的行的子行数组。
 
 ### `getParentRow`
 
@@ -72,7 +72,7 @@ An array of subRows for the row as returned and created by the `options.getSubRo
 type getParentRow = () => Row<TData> | undefined
 ```
 
-Returns the parent row for the row, if it exists.
+返回行的父行（如果存在）。
 
 ### `getParentRows`
 
@@ -80,7 +80,7 @@ Returns the parent row for the row, if it exists.
 type getParentRows = () => Row<TData>[]
 ```
 
-Returns the parent rows for the row, all the way up to a root row.
+返回行的父行，一直到根行。
 
 ### `getLeafRows`
 
@@ -88,7 +88,7 @@ Returns the parent rows for the row, all the way up to a root row.
 type getLeafRows = () => Row<TData>[]
 ```
 
-Returns the leaf rows for the row, not including any parent rows.
+返回行的叶子行，不包括任何父行。
 
 ### `originalSubRows`
 
@@ -96,7 +96,7 @@ Returns the leaf rows for the row, not including any parent rows.
 originalSubRows?: TData[]
 ```
 
-An array of the original subRows as returned by the `options.getSubRows` option.
+由`options.getSubRows`选项返回的原始子行数组。
 
 ### `getAllCells`
 
@@ -104,4 +104,4 @@ An array of the original subRows as returned by the `options.getSubRows` option.
 type getAllCells = () => Cell<TData>[]
 ```
 
-Returns all of the [Cells](./cell.md) for the row.
+返回行的所有[单元格](./cell.md)。

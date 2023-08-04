@@ -1,12 +1,12 @@
 ---
-title: Header
+title: 表头
 ---
 
-These are **core** options and API properties for all headers. More options and API properties may be available for other [table features](../../guide/features).
+这些是所有表头的**核心**选项和 API 属性。其他[表格功能](../../guide/features)可能还有更多选项和 API 属性。
 
-## Header API
+## 表头 API
 
-All header objects have the following properties:
+所有表头对象都具有以下属性：
 
 ### `id`
 
@@ -14,7 +14,7 @@ All header objects have the following properties:
 id: string
 ```
 
-The unique identifier for the header.
+表头的唯一标识符。
 
 ### `index`
 
@@ -22,7 +22,7 @@ The unique identifier for the header.
 id: number
 ```
 
-The index for the header within the header group.
+表头在表头组中的索引。
 
 ### `depth`
 
@@ -30,7 +30,7 @@ The index for the header within the header group.
 id: number
 ```
 
-The depth of the header, zero-indexed based.
+表头的深度，基于零索引。
 
 ### `column`
 
@@ -38,7 +38,7 @@ The depth of the header, zero-indexed based.
 column: Column<TData>
 ```
 
-The header's associated [Column](./column.md) object
+表头关联的[Column](./column.md)对象。
 
 ### `headerGroup`
 
@@ -46,7 +46,7 @@ The header's associated [Column](./column.md) object
 headerGroup: HeaderGroup<TData>
 ```
 
-The header's associated [HeaderGroup](./header-group.md) object
+表头关联的[HeaderGroup](./header-group.md)对象。
 
 ### `subHeaders`
 
@@ -54,7 +54,7 @@ The header's associated [HeaderGroup](./header-group.md) object
 type subHeaders = Header<TData>[]
 ```
 
-The header's hierarchical sub/child headers. Will be empty if the header's associated column is a leaf-column.
+表头的层次子/子表头。如果表头关联的列是叶子列，则为空。
 
 ### `colSpan`
 
@@ -62,7 +62,7 @@ The header's hierarchical sub/child headers. Will be empty if the header's assoc
 colSpan: number
 ```
 
-The col-span for the header.
+表头的列跨度。
 
 ### `rowSpan`
 
@@ -70,7 +70,7 @@ The col-span for the header.
 rowSpan: number
 ```
 
-The row-span for the header.
+表头的行跨度。
 
 ### `getLeafHeaders`
 
@@ -78,7 +78,7 @@ The row-span for the header.
 type getLeafHeaders = () => Header<TData>[]
 ```
 
-Returns the leaf headers hierarchically nested under this header.
+返回在此表头下层次嵌套的叶子表头。
 
 ### `isPlaceholder`
 
@@ -86,7 +86,7 @@ Returns the leaf headers hierarchically nested under this header.
 isPlaceholder: boolean
 ```
 
-A boolean denoting if the header is a placeholder header
+一个布尔值，表示表头是否为占位符表头。
 
 ### `placeholderId`
 
@@ -94,7 +94,7 @@ A boolean denoting if the header is a placeholder header
 placeholderId?: string
 ```
 
-If the header is a placeholder header, this will be a unique header ID that does not conflict with any other headers across the table
+如果表头是占位符表头，则这将是一个唯一的表头 ID，不会与表格中的任何其他表头冲突。
 
 ### `getContext`
 
@@ -106,7 +106,7 @@ getContext: () => {
 }
 ```
 
-Returns the rendering context (or props) for column-based components like headers, footers and filters. Use these props with your framework's `flexRender` utility to render these using the template of your choice:
+返回基于列的组件（如表头、表尾和过滤器）的渲染上下文（或属性）。使用这些属性与您的框架的 `flexRender` 实用程序一起使用，使用您选择的模板来渲染它们：
 
 ```tsx
 flexRender(header.column.columnDef.header, header.getContext())

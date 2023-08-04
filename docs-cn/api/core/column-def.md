@@ -2,9 +2,9 @@
 title: ColumnDef
 ---
 
-Column definitions are plain objects with the following options:
+Column definitions是一个包含以下选项的普通对象：
 
-## Options
+## 选项
 
 ### `id`
 
@@ -12,12 +12,12 @@ Column definitions are plain objects with the following options:
 id: string
 ```
 
-The unique identifier for the column.
+列的唯一标识符。
 
-> 🧠 A column ID is optional when:
+> 🧠 当：
 >
-> - An accessor column is created with an object key accessor
-> - The column header is defined as a string
+> - 使用对象键访问器创建访问器列
+> - 列标题定义为字符串时，列ID是可选的
 
 ### `accessorKey`
 
@@ -25,7 +25,7 @@ The unique identifier for the column.
 accessorKey?: string & typeof TData
 ```
 
-The key of the row object to use when extracting the value for the column.
+提取列值时要使用的行对象的键。
 
 ### `accessorFn`
 
@@ -33,7 +33,7 @@ The key of the row object to use when extracting the value for the column.
 accessorFn?: (originalRow: TData, index: number) => any
 ```
 
-The accessor function to use when extracting the value for the column from each row.
+从每行中提取列值时要使用的访问器函数。
 
 ### `columns`
 
@@ -41,7 +41,7 @@ The accessor function to use when extracting the value for the column from each 
 columns?: ColumnDef<TData>[]
 ```
 
-The child column defs to include in a group column.
+要包含在组列中的子列定义。
 
 ### `header`
 
@@ -55,7 +55,7 @@ header?:
     }) => unknown)
 ```
 
-The header to display for the column. If a string is passed, it can be used as a default for the column ID. If a function is passed, it will be passed a props object for the header and should return the rendered header value (the exact type depends on the adapter being used).
+要显示的列标题。如果传递了字符串，它可以用作列ID的默认值。如果传递了函数，它将接收一个用于标题的props对象，并应返回呈现的标题值（具体类型取决于所使用的适配器）。
 
 ### `footer`
 
@@ -69,7 +69,7 @@ footer?:
     }) => unknown)
 ```
 
-The footer to display for the column. If a function is passed, it will be passed a props object for the header and should return the rendered header value (the exact type depends on the adapter being used).
+要显示的列页脚。如果传递了函数，它将接收一个用于页脚的props对象，并应返回呈现的页脚值（具体类型取决于所使用的适配器）。
 
 ### `cell`
 
@@ -84,7 +84,7 @@ cell?: ((props: {
 }) => unknown)
 ```
 
-The cell to display each row for the column. If a function is passed, it will be passed a props object for the cell and should return the rendered cell value (the exact type depends on the adapter being used).
+要为列的每一行显示的单元格。如果传递了函数，它将接收一个用于单元格的props对象，并应返回呈现的单元格值（具体类型取决于所使用的适配器）。
 
 ### `meta`
 
@@ -92,7 +92,7 @@ The cell to display each row for the column. If a function is passed, it will be
 meta?: ColumnMeta // This interface is extensible via declaration merging. See below!
 ```
 
-The meta data to associated with the column. We can access it anywhere when the column is available via `column.columnDef.meta`. This type is global to all tables and can be extended like so:
+与列关联的元数据。当列可用时，我们可以在任何地方通过`column.columnDef.meta`访问它。此类型对所有表格都是全局的，并且可以通过以下方式进行扩展：
 
 ```tsx
 import '@tanstack/react-table'

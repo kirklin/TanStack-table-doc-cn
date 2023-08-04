@@ -2,11 +2,11 @@
 title: HeaderGroup
 ---
 
-These are **core** options and API properties for all header groups. More options and API properties may be available for other [table features](../../guide/features).
+这些是所有表头组的**核心**选项和API属性。其他[表格功能](../../guide/features)可能还有更多选项和API属性。
 
-## Header Group API
+## 表头组API
 
-All header group objects have the following properties:
+所有表头组对象都具有以下属性：
 
 ### `id`
 
@@ -14,7 +14,7 @@ All header group objects have the following properties:
 id: string
 ```
 
-The unique identifier for the header group.
+表头组的唯一标识符。
 
 ### `depth`
 
@@ -22,7 +22,7 @@ The unique identifier for the header group.
 id: number
 ```
 
-The depth of the header group, zero-indexed based.
+表头组的深度，从零开始计数。
 
 ### `headers`
 
@@ -30,4 +30,4 @@ The depth of the header group, zero-indexed based.
 type headers = Header<TData>[]
 ```
 
-An array of [Header](./Header) objects that belong to this header group
+属于此表头组的[Header](./Header)对象的数组。

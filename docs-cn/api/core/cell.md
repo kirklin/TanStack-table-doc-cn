@@ -1,12 +1,12 @@
 ---
-title: Cell
+title: 单元格
 ---
 
-These are **core** options and API properties for all cells. More options and API properties are available for other [table features](../../guide/features).
+这些是所有单元格的**核心**选项和API属性。其他[表格功能](../../guide/features)还提供了更多选项和API属性。
 
-## Cell API
+## 单元格API
 
-All cell objects have the following properties:
+所有单元格对象都具有以下属性：
 
 ### `id`
 
@@ -14,7 +14,7 @@ All cell objects have the following properties:
 id: string
 ```
 
-The unique ID for the cell across the entire table.
+整个表格中单元格的唯一ID。
 
 ### `getValue`
 
@@ -22,7 +22,7 @@ The unique ID for the cell across the entire table.
 getValue: () => any
 ```
 
-Returns the value for the cell, accessed via the associated column's accessor key or accessor function.
+通过关联列的访问器键或访问器函数，返回单元格的值。
 
 ### `row`
 
@@ -30,7 +30,7 @@ Returns the value for the cell, accessed via the associated column's accessor ke
 row: Row<TData>
 ```
 
-The associated Row object for the cell.
+与单元格关联的行对象。
 
 ### `column`
 
@@ -38,7 +38,7 @@ The associated Row object for the cell.
 column: Column<TData>
 ```
 
-The associated Column object for the cell.
+与单元格关联的列对象。
 
 ### `getContext`
 
@@ -53,7 +53,7 @@ getContext: () => {
 }
 ```
 
-Returns the rendering context (or props) for cell-based components like cells and aggregated cells. Use these props with your framework's `flexRender` utility to render these using the template of your choice:
+返回基于单元格的组件（如单元格和聚合单元格）的渲染上下文（或属性）。使用这些属性与您的框架的`flexRender`实用程序一起使用，使用您选择的模板来渲染它们：
 
 ```tsx
 flexRender(cell.column.columnDef.cell, cell.getContext())
