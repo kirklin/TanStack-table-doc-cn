@@ -194,15 +194,6 @@
       ]
     },
     {
-      "label": "Enterprise",
-      "children": [
-        {
-          "label": "AG Grid",
-          "to": "enterprise/ag-grid"
-        }
-      ]
-    },
-    {
       "label": "React Examples",
       "children": [
         {

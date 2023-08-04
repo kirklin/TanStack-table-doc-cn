@@ -194,15 +194,6 @@
       ]
     },
     {
-      "label": "企业版",
-      "children": [
-        {
-          "label": "AG Grid",
-          "to": "enterprise/ag-grid"
-        }
-      ]
-    },
-    {
       "label": "React 示例",
       "children": [
         {
