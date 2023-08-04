@@ -10,7 +10,7 @@ TanStack Table的核心是**框架无关**的，这意味着无论你使用哪�
 
 ## Headless
 
-正如在[Intro](./guide/introduction)部分中广泛提到的，TanStack Table是**无头**的。这意味着它不会渲染任何DOM元素，而是依赖于您作为UI/UX开发人员提供表格的标记和样式。这是一种构建可以在任何UI框架中使用的表格的好方法，包括React、Vue、Solid，甚至是React Native等JS到原生平台！
+正如在[Intro](./guide/introduction)部分中广泛提到的，TanStack Table是**Headless**的。这意味着它不会渲染任何DOM元素，而是依赖于您作为UI/UX开发人员提供表格的标记和样式。这是一种构建可以在任何UI框架中使用的表格的好方法，包括React、Vue、Solid，甚至是React Native等JS到原生平台！
 
 ## 核心对象和类型
 
