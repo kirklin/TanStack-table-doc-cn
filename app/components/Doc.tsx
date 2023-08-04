@@ -31,7 +31,7 @@ export function Doc({
           href={`https://github.com/${repo}/tree/${branch}/${filePath}`}
           className="flex items-center gap-2"
         >
-          <FaEdit /> Edit on GitHub
+          <FaEdit /> 在 GitHub 上编辑此页
         </a>
       </div>
       <div className="h-24" />

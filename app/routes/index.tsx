@@ -36,7 +36,7 @@ const libraries = [
       `shadow-xl shadow-blue-700/20 dark:shadow-lg dark:shadow-blue-500/30 text-blue-500 border-2 border-transparent hover:border-current`,
     to: '/table',
     tagline: `Headless UI for building powerful tables & datagrids`,
-    description: `Supercharge your tables or build a datagrid from scratch for TS/JS, React, Vue, Solid & Svelte while retaining 100% control over markup and styles.`,
+    description: `TanStack/table 是一个功能强大的用于创建表格的工具，而这个项目的目标是让其文档能够被更广泛的中文使用者所了解和利用。`,
   },
 ]
 
@@ -113,7 +113,7 @@ export default function Index() {
             mb-2
             `}
           >
-            TanStack
+            TanStack Docs CN
           </span>
         </h1>
         <h2
@@ -121,22 +121,12 @@ export default function Index() {
             md:text-3xl
             lg:text-5xl lg:max-w-2xl"
         >
-          High-quality open-source software for{' '}
-          <span className="underline decoration-dashed decoration-yellow-500 decoration-3 underline-offset-2">
-            web developers.
-          </span>
+          TanStack-doc-cn 是一个由社区驱动的项目
         </h2>
-        <p
-          className="text opacity-90 max-w-sm
-            lg:text-xl lg:max-w-2xl"
-        >
-          Headless, type-safe, & powerful utilities for State Management,
-          Routing, Data Visualization, Charts, Tables, and more.
-        </p>
       </div>
       <div className="h-8" />
       <div className="px-4 lg:max-w-screen-lg md:mx-auto">
-        <h3 className={`text-4xl font-light`}>Open Source Libraries</h3>
+        <h3 className={`text-4xl font-light`}>已翻译的库</h3>
         <div
           className={`mt-4 grid grid-cols-1 gap-8
             sm:grid-cols-2 sm:gap-4

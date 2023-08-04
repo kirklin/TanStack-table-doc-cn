@@ -21,7 +21,7 @@ const menu = [
   {
     label: (
       <div className="flex items-center gap-2">
-        <CgCornerUpLeft className="text-lg" /> TanStack
+        <CgCornerUpLeft className="text-lg" /> 中文站首页
       </div>
     ),
     to: '/',
@@ -29,7 +29,7 @@ const menu = [
   {
     label: (
       <div className="flex items-center gap-1">
-        <VscPreview className="text-lg" /> Examples
+        <VscPreview className="text-lg" /> 示例代码
       </div>
     ),
     to: './docs/examples',
@@ -37,7 +37,7 @@ const menu = [
   {
     label: (
       <div className="flex items-center gap-1">
-        <FaBook className="text-lg" /> Docs
+        <FaBook className="text-lg" /> 文档
       </div>
     ),
     to: './docs/guide/introduction',
@@ -124,7 +124,7 @@ export default function ReactTableRoute() {
           className={`py-2 px-4 bg-teal-500 rounded text-white uppercase font-extrabold`}
           prefetch="intent"
         >
-          开始
+          开始阅读文档
         </Link>
       </div>
       <div
@@ -188,7 +188,7 @@ export default function ReactTableRoute() {
       <div className="px-4 sm:px-6 lg:px-8 mx-auto container">
         <div className=" sm:text-center pb-16">
           <h3 className="text-3xl text-center mx-auto leading-tight font-extrabold tracking-tight sm:text-4xl lg:leading-none mt-2">
-            Framework Agnostic & Feature Rich
+            无框架限制 & 功能丰富
           </h3>
           <p className="mt-4 text-xl max-w-3xl mx-auto leading-7 opacity-60">
             TanStack Table的API和引擎都是高度模块化且与框架无关，同时优先考虑人性化设计。以下是必备功能列表：
@@ -230,7 +230,7 @@ export default function ReactTableRoute() {
 
       <div>
         <div className="uppercase tracking-wider text-sm font-semibold text-center text-gray-400 mb-3">
-          Trusted in Production by
+          这些公司正在使用TanStack Table
         </div>
         {/* @ts-ignore */}
         <marquee scrollamount="2">
@@ -275,11 +275,10 @@ export default function ReactTableRoute() {
       <div className="flex flex-col gap-4">
         <div className="px-4 sm:px-6 lg:px-8  mx-auto container max-w-3xl sm:text-center">
           <h3 className="text-3xl text-center leading-8 font-extrabold tracking-tight sm:text-4xl sm:leading-10 lg:leading-none mt-2">
-            Take it for a spin!
+            让我们试试看吧！🎡
           </h3>
           <p className="my-4 text-xl leading-7  text-gray-600">
-            With some basic styles, some table markup and few columns, you're
-            already well on your way to creating a drop-dead powerful table.
+            只需一些基本样式、一些表格标记和少数列，您就已经在创建一个非常强大的表格的路上了。
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
             {(
@@ -299,12 +298,6 @@ export default function ReactTableRoute() {
                 }`}
                 onClick={
                   () => setFramework(item.value)
-                  // setParams(new URLSearchParams({ framework: item.value }), {
-                  //   replace: true,
-                  //   state: {
-                  //     scroll: false,
-                  //   },
-                  // })
                 }
               >
                 {item.label}
@@ -330,24 +323,6 @@ export default function ReactTableRoute() {
             border: '0',
           }}
         ></iframe>
-      </div>
-
-      <div className="flex flex-col gap-4 items-center">
-        <div className="font-extrabold text-xl lg:text-2xl">
-          Wow, you've come a long way!
-        </div>
-        <div className="italic font-sm opacity-70">
-          Only one thing left to do...
-        </div>
-        <div>
-          <Link
-            to="./docs/guide/introduction"
-            className={`inline-block py-2 px-4 bg-teal-500 rounded text-white uppercase font-extrabold`}
-            prefetch="intent"
-          >
-            Get Started!
-          </Link>
-        </div>
       </div>
       <Footer />
     </div>

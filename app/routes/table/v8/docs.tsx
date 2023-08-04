@@ -23,10 +23,10 @@ const logo = (
 )
 
 const localMenu = {
-  label: 'Menu',
+  label: '菜单',
   children: [
     {
-      label: 'Home',
+      label: '首页',
       to: '..',
     },
     {
