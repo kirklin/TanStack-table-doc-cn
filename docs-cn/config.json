@@ -6,195 +6,195 @@
   },
   "menu": [
     {
-      "label": "Adapters",
+      "label": "适配器",
       "children": [
         {
-          "label": "React Table",
+          "label": "React 表格",
           "to": "adapters/react-table"
         },
         {
-          "label": "Solid Table",
+          "label": "Solid 表格",
           "to": "adapters/solid-table"
         },
         {
-          "label": "Svelte Table",
+          "label": "Svelte 表格",
           "to": "adapters/svelte-table"
         },
         {
-          "label": "Vue Table",
+          "label": "Vue 表格",
           "to": "adapters/vue-table"
         },
         {
-          "label": "Vanilla JS/TS",
+          "label": "原生 JS/TS",
           "to": "adapters/vanilla"
         }
       ]
     },
     {
-      "label": "Guide",
+      "label": "指南",
       "children": [
         {
-          "label": "Introduction",
+          "label": "介绍",
           "to": "guide/introduction"
         },
         {
-          "label": "Overview",
+          "label": "概述",
           "to": "guide/overview"
         },
         {
-          "label": "Installation",
+          "label": "安装",
           "to": "guide/installation"
         },
         {
-          "label": "Migrating to V8",
+          "label": "迁移到 V8",
           "to": "guide/migrating"
         },
         {
-          "label": "Column Defs",
+          "label": "列定义",
           "to": "guide/column-defs"
         },
         {
-          "label": "Tables",
+          "label": "表格",
           "to": "guide/tables"
         },
         {
-          "label": "Rows",
+          "label": "行",
           "to": "guide/rows"
         },
         {
-          "label": "Headers",
+          "label": "表头",
           "to": "guide/headers"
         },
         {
-          "label": "Cells",
+          "label": "单元格",
           "to": "guide/cells"
         },
         {
-          "label": "Features",
+          "label": "特性",
           "to": "guide/features"
         },
         {
-          "label": "Column Ordering",
+          "label": "列排序",
           "to": "guide/column-ordering"
         },
         {
-          "label": "Column Pinning",
+          "label": "列固定",
           "to": "guide/column-pinning"
         },
         {
-          "label": "Column Sizing",
+          "label": "列尺寸",
           "to": "guide/column-sizing"
         },
         {
-          "label": "Column Visibility",
+          "label": "列可见性",
           "to": "guide/column-visibility"
         },
         {
-          "label": "Filters",
+          "label": "过滤器",
           "to": "guide/filters"
         },
         {
-          "label": "Sorting",
+          "label": "排序",
           "to": "guide/sorting"
         },
         {
-          "label": "Grouping",
+          "label": "分组",
           "to": "guide/grouping"
         },
         {
-          "label": "Expanding",
+          "label": "展开",
           "to": "guide/expanding"
         },
         {
-          "label": "Pagination",
+          "label": "分页",
           "to": "guide/pagination"
         },
         {
-          "label": "Row Selection",
+          "label": "行选择",
           "to": "guide/row-selection"
         }
       ]
     },
     {
-      "label": "Core APIs",
+      "label": "核心 API",
       "children": [
         {
-          "label": "Column Def",
+          "label": "列定义",
           "to": "api/core/column-def"
         },
         {
-          "label": "Table",
+          "label": "表格",
           "to": "api/core/table"
         },
         {
-          "label": "Column",
+          "label": "列",
           "to": "api/core/column"
         },
         {
-          "label": "Header Group",
+          "label": "表头组",
           "to": "api/core/header-group"
         },
         {
-          "label": "Header",
+          "label": "表头",
           "to": "api/core/header"
         },
         {
-          "label": "Row",
+          "label": "行",
           "to": "api/core/row"
         },
         {
-          "label": "Cell",
+          "label": "单元格",
           "to": "api/core/cell"
         }
       ]
     },
     {
-      "label": "Feature APIs",
+      "label": "特性 API",
       "children": [
         {
-          "label": "Column Ordering",
+          "label": "列排序",
           "to": "api/features/column-ordering"
         },
         {
-          "label": "Column Pinning",
+          "label": "列固定",
           "to": "api/features/column-pinning"
         },
         {
-          "label": "Column Sizing",
+          "label": "列尺寸",
           "to": "api/features/column-sizing"
         },
         {
-          "label": "Column Visibility",
+          "label": "列可见性",
           "to": "api/features/column-visibility"
         },
         {
-          "label": "Filters",
+          "label": "过滤器",
           "to": "api/features/filters"
         },
         {
-          "label": "Sorting",
+          "label": "排序",
           "to": "api/features/sorting"
         },
         {
-          "label": "Grouping",
+          "label": "分组",
           "to": "api/features/grouping"
         },
         {
-          "label": "Expanding",
+          "label": "展开",
           "to": "api/features/expanding"
         },
         {
-          "label": "Pagination",
+          "label": "分页",
           "to": "api/features/pagination"
         },
         {
-          "label": "Row Selection",
+          "label": "行选择",
           "to": "api/features/row-selection"
         }
       ]
     },
     {
-      "label": "Enterprise",
+      "label": "企业版",
       "children": [
         {
           "label": "AG Grid",
@@ -203,175 +203,175 @@
       ]
     },
     {
-      "label": "React Examples",
+      "label": "React 示例",
       "children": [
         {
           "to": "examples/react/basic",
-          "label": "Basic"
+          "label": "基础"
         },
         {
           "to": "examples/react/column-groups",
-          "label": "Column Groups"
+          "label": "列分组"
         },
         {
           "to": "examples/react/column-ordering",
-          "label": "Column Ordering"
+          "label": "列排序"
         },
         {
           "to": "examples/react/column-dnd",
-          "label": "Column Ordering (DnD)"
+          "label": "列排序 (拖放)"
         },
         {
           "to": "examples/react/column-pinning",
-          "label": "Column Pinning"
+          "label": "列固定"
         },
         {
           "to": "examples/react/column-sizing",
-          "label": "Column Sizing"
+          "label": "列尺寸"
         },
         {
           "to": "examples/react/column-visibility",
-          "label": "Column Visibility"
+          "label": "列可见性"
         },
         {
           "to": "examples/react/editable-data",
-          "label": "Editable Data"
+          "label": "可编辑数据"
         },
         {
           "to": "examples/react/expanding",
-          "label": "Expanding"
+          "label": "展开"
         },
         {
           "to": "examples/react/sub-components",
-          "label": "Sub Components"
+          "label": "子组件"
         },
         {
           "to": "examples/react/filters",
-          "label": "Filters"
+          "label": "过滤器"
         },
         {
           "to": "examples/react/fully-controlled",
-          "label": "Fully Controlled"
+          "label": "完全受控"
         },
         {
           "to": "examples/react/grouping",
-          "label": "Grouping"
+          "label": "分组"
         },
         {
           "to": "examples/react/pagination",
-          "label": "Pagination"
+          "label": "分页"
         },
         {
           "to": "examples/react/pagination-controlled",
-          "label": "Pagination Controlled"
+          "label": "受控分页"
         },
         {
           "to": "examples/react/row-dnd",
-          "label": "Row DnD"
+          "label": "行拖放"
         },
         {
           "to": "examples/react/row-selection",
-          "label": "Row Selection"
+          "label": "行选择"
         },
         {
           "to": "examples/react/sorting",
-          "label": "Sorting"
+          "label": "排序"
         },
         {
           "to": "examples/react/virtualized-rows",
-          "label": "Virtualized Rows"
+          "label": "虚拟行"
         },
         {
           "to": "examples/react/virtualized-infinite-scrolling",
-          "label": "Virtualized Infinite Scrolling"
+          "label": "虚拟无限滚动"
         },
         {
           "to": "examples/react/kitchen-sink",
-          "label": "Kitchen Sink"
+          "label": "厨房水槽"
         }
       ]
     },
     {
-      "label": "Solid Examples",
+      "label": "Solid 示例",
       "children": [
         {
           "to": "examples/solid/basic",
-          "label": "Basic"
+          "label": "基础"
         },
         {
           "to": "examples/solid/column-groups",
-          "label": "Column Groups"
+          "label": "列分组"
         },
         {
           "to": "examples/solid/column-ordering",
-          "label": "Column Ordering"
+          "label": "列排序"
         },
         {
           "to": "examples/solid/column-visibility",
-          "label": "Column Visibility"
+          "label": "列可见性"
         },
         {
           "to": "examples/solid/sorting",
-          "label": "Sorting"
+          "label": "排序"
         }
       ]
     },
     {
-      "label": "Svelte Examples",
+      "label": "Svelte 示例",
       "children": [
         {
           "to": "examples/svelte/basic",
-          "label": "Basic"
+          "label": "基础"
         },
         {
           "to": "examples/svelte/column-groups",
-          "label": "Column Groups"
+          "label": "列分组"
         },
         {
           "to": "examples/svelte/column-ordering",
-          "label": "Column Ordering"
+          "label": "列排序"
         },
         {
           "to": "examples/svelte/column-pinning",
-          "label": "Column Pinning"
+          "label": "列固定"
         },
         {
           "to": "examples/svelte/column-visibility",
-          "label": "Column Visibility"
+          "label": "列可见性"
         },
         {
           "to": "examples/svelte/sorting",
-          "label": "Sorting"
+          "label": "排序"
         }
       ]
     },
     {
-      "label": "Vue Examples",
+      "label": "Vue 示例",
       "children": [
         {
           "to": "examples/vue/basic",
-          "label": "Basic"
+          "label": "基础"
         },
         {
           "to": "examples/vue/column-ordering",
-          "label": "Column Ordering"
+          "label": "列排序"
         },
         {
           "to": "examples/vue/column-pinning",
-          "label": "Column Pinning"
+          "label": "列固定"
         },
         {
           "to": "examples/vue/pagination",
-          "label": "Pagination"
+          "label": "分页"
         },
         {
           "to": "examples/vue/sorting",
-          "label": "Sorting"
+          "label": "排序"
         }
       ]
     },
     {
-      "label": "CSS/Layout Examples",
+      "label": "CSS/Layout 示例",
       "children": [
         {
           "to": "examples/solid/bootstrap",
@@ -387,11 +387,11 @@
         },
         {
           "to": "examples/react/full-width-table",
-          "label": "React Full Width"
+          "label": "React 全宽度"
         },
         {
           "to": "examples/react/full-width-resizable-table",
-          "label": "React Full Width Resizable"
+          "label": "React 全宽度可调整大小"
         }
       ]
     }
