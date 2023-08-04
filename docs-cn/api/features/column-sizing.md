@@ -1,11 +1,11 @@
 ---
-title: Column Sizing
+title: 列尺寸
 id: column-sizing
 ---
 
-## State
+## 状态
 
-Column sizing state is stored on the table using the following shape:
+表格上的列大小状态以以下形式存储：
 
 ```tsx
 export type ColumnSizingTableState = {
@@ -25,7 +25,7 @@ export type ColumnSizingInfoState = {
 }
 ```
 
-## Column Def Options
+## 列定义选项
 
 ### `enableResizing`
 
@@ -33,7 +33,7 @@ export type ColumnSizingInfoState = {
 enableResizing?: boolean
 ```
 
-Enables or disables column resizing for the column.
+启用或禁用列的调整大小功能。
 
 ### `size`
 
@@ -41,7 +41,7 @@ Enables or disables column resizing for the column.
 size?: number
 ```
 
-The desired size for the column
+列的期望大小。
 
 ### `minSize`
 
@@ -49,7 +49,7 @@ The desired size for the column
 minSize?: number
 ```
 
-The minimum allowed size for the column
+列允许的最小大小。
 
 ### `maxSize`
 
@@ -57,11 +57,11 @@ The minimum allowed size for the column
 maxSize?: number
 ```
 
-The maximum allowed size for the column
+列允许的最大大小。
 
-## Column API
+## 列 API
 
-## Table Options
+## 表格选项
 
 ### `getSize`
 
@@ -69,7 +69,7 @@ The maximum allowed size for the column
 getSize: () => number
 ```
 
-Returns the current size of the column
+返回列的当前大小。
 
 ### `getStart`
 
@@ -77,7 +77,7 @@ Returns the current size of the column
 getStart: (position?: ColumnPinningPosition) => number
 ```
 
-Returns the offset measurement along the row-axis (usually the x-axis for standard tables) for the column.
+返回列沿行轴（通常是标准表格的 x 轴）的偏移量测量。
 
 ### `getCanResize`
 
@@ -85,7 +85,7 @@ Returns the offset measurement along the row-axis (usually the x-axis for standa
 getCanResize: () => boolean
 ```
 
-Returns `true` if the column can be resized.
+如果列可以调整大小，则返回 `true`。
 
 ### `getIsResizing`
 
@@ -93,7 +93,7 @@ Returns `true` if the column can be resized.
 getIsResizing: () => boolean
 ```
 
-Returns `true` if the column is currently being resized.
+如果列当前正在调整大小，则返回 `true`。
 
 ### `resetSize`
 
@@ -101,9 +101,9 @@ Returns `true` if the column is currently being resized.
 resetSize: () => void
 ```
 
-Resets the column size to its initial size.
+将列的大小重置为初始大小。
 
-## Header API
+## 头部 API
 
 ### `getSize`
 
@@ -111,7 +111,7 @@ Resets the column size to its initial size.
 getSize: () => number
 ```
 
-Returns the size for the header, calculated by summing the size of all leaf-columns that belong to it.
+返回头部的大小，通过对其所有属于它的叶子列的大小求和计算得出。
 
 ### `getStart`
 
@@ -119,7 +119,7 @@ Returns the size for the header, calculated by summing the size of all leaf-colu
 getStart: (position?: ColumnPinningPosition) => number
 ```
 
-Returns the offset measurement along the row-axis (usually the x-axis for standard tables) for the header. This is effectively a sum of the offset measurements of all preceding headers.
+返回头部沿行轴（通常是标准表格的 x 轴）的偏移量测量。这实际上是所有前面头部的偏移量测量之和。
 
 ### `getResizeHandler`
 
@@ -127,14 +127,14 @@ Returns the offset measurement along the row-axis (usually the x-axis for standa
 getResizeHandler: () => (event: unknown) => void
 ```
 
-Returns an event handler function that can be used to resize the header. It can be used as an:
+返回一个事件处理函数，用于调整头部的大小。它可以用作：
 
-- `onMouseDown` handler
-- `onTouchStart` handler
+- `onMouseDown` 处理程序
+- `onTouchStart` 处理程序
 
-The dragging and release events are automatically handled for you.
+拖动和释放事件将自动处理。
 
-## Table API Options
+## 表格 API 选项
 
 ### `enableColumnResizing`
 
@@ -142,7 +142,7 @@ The dragging and release events are automatically handled for you.
 enableColumnResizing?: boolean
 ```
 
-Enables/disables column resizing for \*all columns\*\*.
+启用/禁用\*所有列\*\*的列调整大小。
 
 ### `columnResizeMode`
 
@@ -150,7 +150,7 @@ Enables/disables column resizing for \*all columns\*\*.
 columnResizeMode?: 'onChange' | 'onEnd'
 ```
 
-Determines when the columnSizing state is updated. `onChange` updates the state when the user is dragging the resize handle. `onEnd` updates the state when the user releases the resize handle.
+确定何时更新 columnSizing 状态。`onChange` 在用户拖动调整大小手柄时更新状态。`onEnd` 在用户释放调整大小手柄时更新状态。
 
 ### `onColumnSizingChange`
 
@@ -158,7 +158,7 @@ Determines when the columnSizing state is updated. `onChange` updates the state 
 onColumnSizingChange?: OnChangeFn<ColumnSizingState>
 ```
 
-This optional function will be called when the columnSizing state changes. If you provide this function, you will be responsible for maintaining its state yourself. You can pass this state back to the table via the `state.columnSizing` table option.
+当 columnSizing 状态发生变化时，将调用此可选函数。如果提供了此函数，您将负责自行维护其状态。您可以通过 `state.columnSizing` 表格选项将此状态传递回表格。
 
 ### `onColumnSizingInfoChange`
 
@@ -166,9 +166,9 @@ This optional function will be called when the columnSizing state changes. If yo
 onColumnSizingInfoChange?: OnChangeFn<ColumnSizingInfoState>
 ```
 
-This optional function will be called when the columnSizingInfo state changes. If you provide this function, you will be responsible for maintaining its state yourself. You can pass this state back to the table via the `state.columnSizingInfo` table option.
+当 columnSizingInfo 状态发生变化时，将调用此可选函数。如果提供了此函数，您将负责自行维护其状态。您可以通过 `state.columnSizingInfo` 表格选项将此状态传递回表格。
 
-## Table API
+## 表格 API
 
 ### `setColumnSizing`
 
@@ -176,7 +176,7 @@ This optional function will be called when the columnSizingInfo state changes. I
 setColumnSizing: (updater: Updater<ColumnSizingState>) => void
 ```
 
-Sets the column sizing state using an updater function or a value. This will trigger the underlying `onColumnSizingChange` function if one is passed to the table options, otherwise the state will be managed automatically by the table.
+使用更新函数或值设置列大小状态。如果表格选项中传递了 `onColumnSizingChange` 函数，这将触发底层的 `onColumnSizingChange` 函数，否则状态将由表格自动管理。
 
 ### `setColumnSizingInfo`
 
@@ -184,7 +184,7 @@ Sets the column sizing state using an updater function or a value. This will tri
 setColumnSizingInfo: (updater: Updater<ColumnSizingInfoState>) => void
 ```
 
-Sets the column sizing info state using an updater function or a value. This will trigger the underlying `onColumnSizingInfoChange` function if one is passed to the table options, otherwise the state will be managed automatically by the table.
+使用更新函数或值设置列大小信息状态。如果表格选项中传递了 `onColumnSizingInfoChange` 函数，这将触发底层的 `onColumnSizingInfoChange` 函数，否则状态将由表格自动管理。
 
 ### `resetColumnSizing`
 
@@ -192,7 +192,7 @@ Sets the column sizing info state using an updater function or a value. This wil
 resetColumnSizing: (defaultState?: boolean) => void
 ```
 
-Resets column sizing to its initial state. If `defaultState` is `true`, the default state for the table will be used instead of the initialValue provided to the table.
+将列大小重置为初始状态。如果 `defaultState` 为 `true`，将使用表格的默认状态，而不是提供给表格的初始值。
 
 ### `resetHeaderSizeInfo`
 
@@ -200,7 +200,7 @@ Resets column sizing to its initial state. If `defaultState` is `true`, the defa
 resetHeaderSizeInfo: (defaultState?: boolean) => void
 ```
 
-Resets column sizing info to its initial state. If `defaultState` is `true`, the default state for the table will be used instead of the initialValue provided to the table.
+将列大小信息重置为初始状态。如果 `defaultState` 为 `true`，将使用表格的默认状态，而不是提供给表格的初始值。
 
 ### `getTotalSize`
 
@@ -208,7 +208,7 @@ Resets column sizing info to its initial state. If `defaultState` is `true`, the
 getTotalSize: () => number
 ```
 
-Returns the total size of the table by calculating the sum of the sizes of all leaf-columns.
+通过计算所有叶子列的大小之和，返回表格的总大小。
 
 ### `getLeftTotalSize`
 
@@ -216,7 +216,7 @@ Returns the total size of the table by calculating the sum of the sizes of all l
 getLeftTotalSize: () => number
 ```
 
-If pinning, returns the total size of the left portion of the table by calculating the sum of the sizes of all left leaf-columns.
+如果有固定列，通过计算所有左侧叶子列的大小之和，返回表格左侧部分的总大小。
 
 ### `getCenterTotalSize`
 
@@ -224,7 +224,7 @@ If pinning, returns the total size of the left portion of the table by calculati
 getCenterTotalSize: () => number
 ```
 
-If pinning, returns the total size of the center portion of the table by calculating the sum of the sizes of all unpinned/center leaf-columns.
+如果有固定列，通过计算所有未固定/中心叶子列的大小之和，返回表格中心部分的总大小。
 
 ### `getRightTotalSize`
 
@@ -232,4 +232,4 @@ If pinning, returns the total size of the center portion of the table by calcula
 getRightTotalSize: () => number
 ```
 
-If pinning, returns the total size of the right portion of the table by calculating the sum of the sizes of all right leaf-columns.
+如果有固定列，通过计算所有右侧叶子列的大小之和，返回表格右侧部分的总大小。

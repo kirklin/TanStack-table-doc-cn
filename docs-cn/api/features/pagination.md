@@ -1,11 +1,11 @@
 ---
-title: Pagination
+title: 分页
 id: pagination
 ---
 
-## State
+## 状态
 
-Pagination state is stored on the table using the following shape:
+分页状态以以下形式存储在表格中：
 
 ```tsx
 export type PaginationState = {
@@ -22,7 +22,7 @@ export type PaginationInitialTableState = {
 }
 ```
 
-## Table Options
+## 表格选项
 
 ### `manualPagination`
 
@@ -30,7 +30,7 @@ export type PaginationInitialTableState = {
 manualPagination?: boolean
 ```
 
-Enables manual pagination. If this option is set to `true`, the table will not automatically paginate rows using `getPaginationRowModel()` and instead will expect you to manually paginate the rows before passing them to the table. This is useful if you are doing server-side pagination and aggregation.
+启用手动分页。如果将此选项设置为`true`，表格将不会使用`getPaginationRowModel()`自动分页行，而是期望您在将行传递给表格之前手动分页。如果您正在进行服务器端分页和聚合，这将非常有用。
 
 ### `pageCount`
 
@@ -38,7 +38,7 @@ Enables manual pagination. If this option is set to `true`, the table will not a
 pageCount?: number
 ```
 
-When manually controlling pagination, you should supply a total `pageCount` value to the table if you know it. If you do not know how many pages there are, you can set this to `-1`.
+在手动控制分页时，如果您知道总页数，请为表格提供一个总的`pageCount`值。如果您不知道有多少页，可以将其设置为`-1`。
 
 ### `autoResetPageIndex`
 
@@ -46,9 +46,9 @@ When manually controlling pagination, you should supply a total `pageCount` valu
 autoResetPageIndex?: boolean
 ```
 
-If set to `true`, pagination will be reset to the first page when page-altering state changes eg. `data` is updated, filters change, grouping changes, etc.
+如果设置为`true`，当页面更改状态发生变化时，例如更新`data`、更改过滤器、更改分组等，分页将被重置为第一页。
 
-> 🧠 Note: This option defaults to `false` if `manualPagination` is set to `true`
+> 🧠 注意：如果`manualPagination`设置为`true`，此选项默认为`false`
 
 ### `onPaginationChange`
 
@@ -56,7 +56,7 @@ If set to `true`, pagination will be reset to the first page when page-altering 
 onPaginationChange?: OnChangeFn<PaginationState>
 ```
 
-If this function is provided, it will be called when the pagination state changes and you will be expected to manage the state yourself. You can pass the managed state back to the table via the `tableOptions.state.pagination` option.
+如果提供了此函数，当分页状态发生变化时，将调用该函数，并期望您自行管理状态。您可以通过`tableOptions.state.pagination`选项将管理的状态传递回表格。
 
 ### `getPaginationRowModel`
 
@@ -64,11 +64,11 @@ If this function is provided, it will be called when the pagination state change
 getPaginationRowModel?: (table: Table<TData>) => () => RowModel<TData>
 ```
 
-Returns the row model after pagination has taken place, but no further.
+在分页完成后返回行模型，但不再进行进一步操作。
 
-Pagination columns are automatically reordered by default to the start of the columns list. If you would rather remove them or leave them as-is, set the appropriate mode here.
+默认情况下，分页列会自动重新排序到列列表的开头。如果您希望删除它们或保留它们不变，请在此处设置适当的模式。
 
-## Table API
+## 表格 API
 
 ### `setPagination`
 
@@ -76,7 +76,7 @@ Pagination columns are automatically reordered by default to the start of the co
 setPagination: (updater: Updater<PaginationState>) => void
 ```
 
-Sets or updates the `state.pagination` state.
+设置或更新`state.pagination`状态。
 
 ### `resetPagination`
 
@@ -84,7 +84,7 @@ Sets or updates the `state.pagination` state.
 resetPagination: (defaultState?: boolean) => void
 ```
 
-Resets the **pagination** state to `initialState.pagination`, or `true` can be passed to force a default blank state reset to `[]`.
+将**分页**状态重置为`initialState.pagination`，或者可以传递`true`以强制将默认空状态重置为`[]`。
 
 ### `setPageIndex`
 
@@ -92,7 +92,7 @@ Resets the **pagination** state to `initialState.pagination`, or `true` can be p
 setPageIndex: (updater: Updater<number>) => void
 ```
 
-Updates the page index using the provided function or value.
+使用提供的函数或值更新页面索引。
 
 ### `resetPageIndex`
 
@@ -100,7 +100,7 @@ Updates the page index using the provided function or value.
 resetPageIndex: (defaultState?: boolean) => void
 ```
 
-Resets the page index to its initial state. If `defaultState` is `true`, the page index will be reset to `0` regardless of initial state.
+将页面索引重置为初始状态。如果`defaultState`为`true`，无论初始状态如何，页面索引都将重置为`0`。
 
 ### `setPageSize`
 
@@ -108,7 +108,7 @@ Resets the page index to its initial state. If `defaultState` is `true`, the pag
 setPageSize: (updater: Updater<number>) => void
 ```
 
-Updates the page size using the provided function or value.
+使用提供的函数或值更新页面大小。
 
 ### `resetPageSize`
 
@@ -116,7 +116,7 @@ Updates the page size using the provided function or value.
 resetPageSize: (defaultState?: boolean) => void
 ```
 
-Resets the page size to its initial state. If `defaultState` is `true`, the page size will be reset to `10` regardless of initial state.
+将页面大小重置为初始状态。如果`defaultState`为`true`，无论初始状态如何，页面大小都将重置为`10`。
 
 ### `setPageCount`
 
@@ -124,7 +124,7 @@ Resets the page size to its initial state. If `defaultState` is `true`, the page
 setPageCount: (updater: Updater<number>) => void
 ```
 
-Updates the page count using the provided function or value.
+使用提供的函数或值更新页面计数。
 
 ### `getPageOptions`
 
@@ -132,7 +132,7 @@ Updates the page count using the provided function or value.
 getPageOptions: () => number[]
 ```
 
-Returns an array of page options (zero-index-based) for the current page size.
+返回当前页面大小的页面选项数组（从零开始索引）。
 
 ### `getCanPreviousPage`
 
@@ -140,7 +140,7 @@ Returns an array of page options (zero-index-based) for the current page size.
 getCanPreviousPage: () => boolean
 ```
 
-Returns whether the table can go to the previous page.
+返回表格是否可以转到上一页。
 
 ### `getCanNextPage`
 
@@ -148,7 +148,7 @@ Returns whether the table can go to the previous page.
 getCanNextPage: () => boolean
 ```
 
-Returns whether the table can go to the next page.
+返回表格是否可以转到下一页。
 
 ### `previousPage`
 
@@ -156,7 +156,7 @@ Returns whether the table can go to the next page.
 previousPage: () => void
 ```
 
-Decrements the page index by one, if possible.
+如果可能，将页面索引减一。
 
 ### `nextPage`
 
@@ -164,7 +164,7 @@ Decrements the page index by one, if possible.
 nextPage: () => void
 ```
 
-Increments the page index by one, if possible.
+如果可能，将页面索引加一。
 
 ### `getPageCount`
 
@@ -172,7 +172,7 @@ Increments the page index by one, if possible.
 getPageCount: () => number
 ```
 
-Returns the page count. If manually paginating or controlling the pagination state, this will come directly from the `options.pageCount` table option, otherwise it will be calculated from the table data using the total row count and current page size.
+返回页面计数。如果手动分页或控制分页状态，则此值将直接来自`options.pageCount`表格选项，否则将使用总行数和当前页面大小从表格数据计算得出。
 
 ### `getPrePaginationRowModel`
 
@@ -180,7 +180,7 @@ Returns the page count. If manually paginating or controlling the pagination sta
 getPrePaginationRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table before any pagination has been applied.
+返回应用任何分页之前的表格行模型。
 
 ### `getPaginationRowModel`
 
@@ -188,4 +188,4 @@ Returns the row model for the table before any pagination has been applied.
 getPaginationRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table after pagination has been applied.
+返回应用分页后的表格行模型。

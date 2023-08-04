@@ -1,11 +1,11 @@
 ---
-title: Expanding
+title: 展开
 id: expanding
 ---
 
-## State
+## 状态
 
-Expanding state is stored on the table using the following shape:
+展开状态以以下形式存储在表格中：
 
 ```tsx
 export type ExpandedState = true | Record<string, boolean>
@@ -15,7 +15,7 @@ export type ExpandedTableState = {
 }
 ```
 
-## Row API
+## 行 API
 
 ### `toggleExpanded`
 
@@ -23,7 +23,7 @@ export type ExpandedTableState = {
 toggleExpanded: (expanded?: boolean) => void
 ```
 
-Toggles the expanded state (or sets it if `expanded` is provided) for the row.
+切换行的展开状态（如果提供了`expanded`参数，则设置为该值）。
 
 ### `getIsExpanded`
 
@@ -31,7 +31,7 @@ Toggles the expanded state (or sets it if `expanded` is provided) for the row.
 getIsExpanded: () => boolean
 ```
 
-Returns whether the row is expanded.
+返回行是否展开。
 
 ### `getCanExpand`
 
@@ -39,7 +39,7 @@ Returns whether the row is expanded.
 getCanExpand: () => boolean
 ```
 
-Returns whether the row can be expanded.
+返回行是否可以展开。
 
 ### `getToggleExpandedHandler`
 
@@ -47,9 +47,9 @@ Returns whether the row can be expanded.
 getToggleExpandedHandler: () => () => void
 ```
 
-Returns a function that can be used to toggle the expanded state of the row. This function can be used to bind to an event handler to a button.
+返回一个函数，用于切换行的展开状态。该函数可用于绑定到按钮的事件处理程序。
 
-## Table Options
+## 表格选项
 
 ### `manualExpanding`
 
@@ -57,7 +57,7 @@ Returns a function that can be used to toggle the expanded state of the row. Thi
 manualExpanding?: boolean
 ```
 
-Enables manual row expansion. If this is set to `true`, `getExpandedRowModel` will not be used to expand rows and you would be expected to perform the expansion in your own data model. This is useful if you are doing server-side expansion.
+启用手动行展开。如果将其设置为`true`，将不会使用`getExpandedRowModel`来展开行，您需要在自己的数据模型中执行展开。如果您正在进行服务器端展开，这将非常有用。
 
 ### `onExpandedChange`
 
@@ -65,7 +65,7 @@ Enables manual row expansion. If this is set to `true`, `getExpandedRowModel` wi
 onExpandedChange?: OnChangeFn<ExpandedState>
 ```
 
-This function is called when the `expanded` table state changes. If a function is provided, you will be responsible for managing this state on your own. To pass the managed state back to the table, use the `tableOptions.state.expanded` option.
+当`expanded`表格状态发生变化时调用此函数。如果提供了函数，则您将负责自行管理此状态。要将托管状态传递回表格，请使用`tableOptions.state.expanded`选项。
 
 ### `autoResetExpanded`
 
@@ -73,7 +73,7 @@ This function is called when the `expanded` table state changes. If a function i
 autoResetExpanded?: boolean
 ```
 
-Enable this setting to automatically reset the expanded state of the table when expanding state changes.
+启用此设置以在展开状态更改时自动重置表格的展开状态。
 
 ### `enableExpanding`
 
@@ -81,7 +81,7 @@ Enable this setting to automatically reset the expanded state of the table when 
 enableExpanding?: boolean
 ```
 
-Enable/disable expanding for all rows.
+启用/禁用所有行的展开。
 
 ### `getExpandedRowModel`
 
@@ -89,7 +89,7 @@ Enable/disable expanding for all rows.
 getExpandedRowModel?: (table: Table<TData>) => () => RowModel<TData>
 ```
 
-This function is responsible for returning the expanded row model. If this function is not provided, the table will not expand rows. You can use the default exported `getExpandedRowModel` function to get the expanded row model or implement your own.
+此函数负责返回展开的行模型。如果未提供此函数，则表格将不会展开行。您可以使用默认导出的`getExpandedRowModel`函数获取展开的行模型，或者自己实现。
 
 ### `getIsRowExpanded`
 
@@ -97,7 +97,7 @@ This function is responsible for returning the expanded row model. If this funct
 getIsRowExpanded?: (row: Row<TData>) => boolean
 ```
 
-If provided, allows you to override the default behavior of determining whether a row is currently expanded.
+如果提供，允许您覆盖确定行当前是否展开的默认行为。
 
 ### `getRowCanExpand`
 
@@ -105,7 +105,7 @@ If provided, allows you to override the default behavior of determining whether 
 getRowCanExpand?: (row: Row<TData>) => boolean
 ```
 
-If provided, allows you to override the default behavior of determining whether a row can be expanded.
+如果提供，允许您覆盖确定行是否可以展开的默认行为。
 
 ### `paginateExpandedRows`
 
@@ -113,11 +113,11 @@ If provided, allows you to override the default behavior of determining whether 
 paginateExpandedRows?: boolean
 ```
 
-If `true` expanded rows will be paginated along with the rest of the table (which means expanded rows may span multiple pages).
+如果为`true`，展开的行将与表格的其余部分一起分页（这意味着展开的行可能跨越多个页面）。
 
-If `false` expanded rows will not be considered for pagination (which means expanded rows will always render on their parents page. This also means more rows will be rendered than the set page size)
+如果为`false`，展开的行将不会被考虑在分页中（这意味着展开的行将始终呈现在其父级页面上。这也意味着将呈现比设置的页面大小更多的行数）。
 
-## Table API
+## 表格 API
 
 ### `setExpanded`
 
@@ -125,7 +125,7 @@ If `false` expanded rows will not be considered for pagination (which means expa
 setExpanded: (updater: Updater<ExpandedState>) => void
 ```
 
-Updates the expanded state of the table via an update function or value
+通过更新函数或值更新表格的展开状态。
 
 ### `toggleAllRowsExpanded`
 
@@ -133,7 +133,7 @@ Updates the expanded state of the table via an update function or value
 toggleAllRowsExpanded: (expanded?: boolean) => void
 ```
 
-Toggles the expanded state for all rows. Optionally, provide a value to set the expanded state to.
+切换所有行的展开状态。可选择提供一个值来设置展开状态。
 
 ### `resetExpanded`
 
@@ -141,7 +141,7 @@ Toggles the expanded state for all rows. Optionally, provide a value to set the 
 resetExpanded: (defaultState?: boolean) => void
 ```
 
-Reset the expanded state of the table to the initial state. If `defaultState` is provided, the expanded state will be reset to `{}`
+将表格的展开状态重置为初始状态。如果提供了`defaultState`，展开状态将重置为`{}`。
 
 ### `getCanSomeRowsExpand`
 
@@ -149,7 +149,7 @@ Reset the expanded state of the table to the initial state. If `defaultState` is
 getCanSomeRowsExpand: () => boolean
 ```
 
-Returns whether there are any rows that can be expanded.
+返回是否有任何行可以展开。
 
 ### `getToggleAllRowsExpandedHandler`
 
@@ -157,7 +157,7 @@ Returns whether there are any rows that can be expanded.
 getToggleAllRowsExpandedHandler: () => (event: unknown) => void
 ```
 
-Returns a handler that can be used to toggle the expanded state of all rows. This handler is meant to be used with an `input[type=checkbox]` element.
+返回一个处理程序，可用于切换所有行的展开状态。此处理程序适用于`input[type=checkbox]`元素。
 
 ### `getIsSomeRowsExpanded`
 
@@ -165,7 +165,7 @@ Returns a handler that can be used to toggle the expanded state of all rows. Thi
 getIsSomeRowsExpanded: () => boolean
 ```
 
-Returns whether there are any rows that are currently expanded.
+返回是否有任何行当前处于展开状态。
 
 ### `getIsAllRowsExpanded`
 
@@ -173,7 +173,7 @@ Returns whether there are any rows that are currently expanded.
 getIsAllRowsExpanded: () => boolean
 ```
 
-Returns whether all rows are currently expanded.
+返回是否所有行都当前处于展开状态。
 
 ### `getExpandedDepth`
 
@@ -181,7 +181,7 @@ Returns whether all rows are currently expanded.
 getExpandedDepth: () => number
 ```
 
-Returns the maximum depth of the expanded rows.
+返回展开行的最大深度。
 
 ### `getExpandedRowModel`
 
@@ -189,7 +189,7 @@ Returns the maximum depth of the expanded rows.
 getExpandedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model after expansion has been applied.
+返回应用展开后的行模型。
 
 ### `getPreExpandedRowModel`
 
@@ -197,4 +197,4 @@ Returns the row model after expansion has been applied.
 getPreExpandedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model before expansion has been applied.
+返回展开前的行模型。

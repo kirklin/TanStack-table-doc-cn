@@ -1,18 +1,16 @@
 ---
-title: Column Pinning
+title: 列固定
 id: column-pinning
 ---
 
 ## Can-Pin
 
-The ability for a column to be **pinned** is determined by the following:
+列固定的能力由以下条件决定：
 
-- `options.enablePinning` is not set to `false`
-- `columnDefinition.enablePinning` is not set to `false`
+- `options.enablePinning` 不设置为 `false`
+- `columnDefinition.enablePinning` 不设置为 `false`
 
-## State
-
-Column pinning state is stored on the table using the following shape:
+列固定状态存储在表格中，具体如下：
 
 ```tsx
 export type ColumnPinningPosition = false | 'left' | 'right'
@@ -27,7 +25,7 @@ export type ColumnPinningTableState = {
 }
 ```
 
-## Table Options
+表格选项
 
 ### `enablePinning`
 
@@ -35,7 +33,7 @@ export type ColumnPinningTableState = {
 enablePinning?: boolean
 ```
 
-Enables/disables all pinning for the table.
+启用/禁用表格的所有列固定功能。
 
 ### `onColumnPinningChange`
 
@@ -43,9 +41,9 @@ Enables/disables all pinning for the table.
 onColumnPinningChange?: OnChangeFn<ColumnPinningState>
 ```
 
-If provided, this function will be called with an `updaterFn` when `state.columnPinning` changes. This overrides the default internal state management, so you will need to persist the state change either fully or partially outside of the table.
+如果提供了此函数，当 `state.columnPinning` 发生变化时，将使用 `updaterFn` 调用该函数。这将覆盖默认的内部状态管理，因此您需要在表格外部完全或部分地持久化状态更改。
 
-## Column Def Options
+列定义选项
 
 ### `enablePinning`
 
@@ -53,9 +51,9 @@ If provided, this function will be called with an `updaterFn` when `state.column
 enablePinning?: boolean
 ```
 
-Enables/disables pinning for the column.
+启用/禁用列的固定功能。
 
-## Table API
+表格 API
 
 ### `setColumnPinning`
 
@@ -63,7 +61,7 @@ Enables/disables pinning for the column.
 setColumnPinning: (updater: Updater<ColumnPinningState>) => void
 ```
 
-Sets or updates the `state.columnPinning` state.
+设置或更新 `state.columnPinning` 状态。
 
 ### `resetColumnPinning`
 
@@ -71,7 +69,7 @@ Sets or updates the `state.columnPinning` state.
 resetColumnPinning: (defaultState?: boolean) => void
 ```
 
-Resets the **columnPinning** state to `initialState.columnPinning`, or `true` can be passed to force a default blank state reset to `{ left: [], right: [], }`.
+将 **columnPinning** 状态重置为 `initialState.columnPinning`，或者可以传递 `true` 强制将其重置为空白状态 `{ left: [], right: [], }`。
 
 ### `getIsSomeColumnsPinned`
 
@@ -79,9 +77,9 @@ Resets the **columnPinning** state to `initialState.columnPinning`, or `true` ca
 getIsSomeColumnsPinned: (position?: ColumnPinningPosition) => boolean
 ```
 
-Returns whether or not any columns are pinned. Optionally specify to only check for pinned columns in either the `left` or `right` position.
+返回是否有任何列被固定。可选择指定仅检查左侧或右侧位置的固定列。
 
-_Note: Does not account for column visibility_
+_注意：不考虑列的可见性_
 
 ### `getLeftHeaderGroups`
 
@@ -89,7 +87,7 @@ _Note: Does not account for column visibility_
 getLeftHeaderGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the left pinned header groups for the table.
+返回表格的左侧固定表头组。
 
 ### `getCenterHeaderGroups`
 
@@ -97,7 +95,7 @@ Returns the left pinned header groups for the table.
 getCenterHeaderGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the unpinned/center header groups for the table.
+返回表格的未固定/中间表头组。
 
 ### `getRightHeaderGroups`
 
@@ -105,7 +103,7 @@ Returns the unpinned/center header groups for the table.
 getRightHeaderGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the right pinned header groups for the table.
+返回表格的右侧固定表头组。
 
 ### `getLeftFooterGroups`
 
@@ -113,7 +111,7 @@ Returns the right pinned header groups for the table.
 getLeftFooterGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the left pinned footer groups for the table.
+返回表格的左侧固定表尾组。
 
 ### `getCenterFooterGroups`
 
@@ -121,7 +119,7 @@ Returns the left pinned footer groups for the table.
 getCenterFooterGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the unpinned/center footer groups for the table.
+返回表格的未固定/中间表尾组。
 
 ### `getRightFooterGroups`
 
@@ -129,7 +127,7 @@ Returns the unpinned/center footer groups for the table.
 getRightFooterGroups: () => HeaderGroup < TData > []
 ```
 
-Returns the right pinned footer groups for the table.
+返回表格的右侧固定表尾组。
 
 ### `getLeftFlatHeaders`
 
@@ -137,7 +135,7 @@ Returns the right pinned footer groups for the table.
 getLeftFlatHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of left pinned headers for the table, including parent headers.
+返回表格的左侧固定表头的扁平数组，包括父表头。
 
 ### `getCenterFlatHeaders`
 
@@ -145,7 +143,7 @@ Returns a flat array of left pinned headers for the table, including parent head
 getCenterFlatHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of unpinned/center headers for the table, including parent headers.
+返回表格的未固定/中间表头的扁平数组，包括父表头。
 
 ### `getRightFlatHeaders`
 
@@ -153,7 +151,7 @@ Returns a flat array of unpinned/center headers for the table, including parent 
 getRightFlatHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of right pinned headers for the table, including parent headers.
+返回表格的右侧固定表头的扁平数组，包括父表头。
 
 ### `getLeftLeafHeaders`
 
@@ -161,7 +159,7 @@ Returns a flat array of right pinned headers for the table, including parent hea
 getLeftLeafHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of leaf-node left pinned headers for the table.
+返回表格的左侧固定表头的叶节点扁平数组。
 
 ### `getCenterLeafHeaders`
 
@@ -169,7 +167,7 @@ Returns a flat array of leaf-node left pinned headers for the table.
 getCenterLeafHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of leaf-node unpinned/center headers for the table.
+返回表格的未固定/中间表头的叶节点扁平数组。
 
 ### `getRightLeafHeaders`
 
@@ -177,7 +175,7 @@ Returns a flat array of leaf-node unpinned/center headers for the table.
 getRightLeafHeaders: () => Header < TData > []
 ```
 
-Returns a flat array of leaf-node right pinned headers for the table.
+返回表格的右侧固定表头的叶节点扁平数组。
 
 ### `getLeftLeafColumns`
 
@@ -185,7 +183,7 @@ Returns a flat array of leaf-node right pinned headers for the table.
 getLeftLeafColumns: () => Column < TData > []
 ```
 
-Returns all left pinned leaf columns.
+返回所有左侧固定的叶节点列。
 
 ### `getRightLeafColumns`
 
@@ -193,7 +191,7 @@ Returns all left pinned leaf columns.
 getRightLeafColumns: () => Column < TData > []
 ```
 
-Returns all right pinned leaf columns.
+返回所有右侧固定的叶节点列。
 
 ### `getCenterLeafColumns`
 
@@ -201,9 +199,9 @@ Returns all right pinned leaf columns.
 getCenterLeafColumns: () => Column < TData > []
 ```
 
-Returns all center pinned (unpinned) leaf columns.
+返回所有中间固定（未固定）的叶节点列。
 
-## Column API
+列 API
 
 ### `getCanPin`
 
@@ -211,7 +209,7 @@ Returns all center pinned (unpinned) leaf columns.
 getCanPin: () => boolean
 ```
 
-Returns whether or not the column can be pinned.
+返回列是否可以固定。
 
 ### `getPinnedIndex`
 
@@ -219,7 +217,7 @@ Returns whether or not the column can be pinned.
 getPinnedIndex: () => number
 ```
 
-Returns the numeric pinned index of the column within a pinned column group.
+返回列在固定列组中的数值固定索引。
 
 ### `getIsPinned`
 
@@ -227,7 +225,7 @@ Returns the numeric pinned index of the column within a pinned column group.
 getIsPinned: () => ColumnPinningPosition
 ```
 
-Returns the pinned position of the column. (`'left'`, `'right'` or `false`)
+返回列的固定位置（`'left'`、`'right'` 或 `false`）。
 
 ### `pin`
 
@@ -235,9 +233,9 @@ Returns the pinned position of the column. (`'left'`, `'right'` or `false`)
 pin: (position: ColumnPinningPosition) => void
 ```
 
-Pins a column to the `'left'` or `'right'`, or unpins the column to the center if `false` is passed.
+将列固定到 `'left'` 或 `'right'`，或者如果传递 `false`，则将列取消固定到中间。
 
-## Row API
+行 API
 
 ### `getLeftVisibleCells`
 
@@ -245,7 +243,7 @@ Pins a column to the `'left'` or `'right'`, or unpins the column to the center i
 getLeftVisibleCells: () => Cell < TData > []
 ```
 
-Returns all left pinned leaf cells in the row.
+返回行中所有左侧固定的叶节点单元格。
 
 ### `getRightVisibleCells`
 
@@ -253,7 +251,7 @@ Returns all left pinned leaf cells in the row.
 getRightVisibleCells: () => Cell < TData > []
 ```
 
-Returns all right pinned leaf cells in the row.
+返回行中所有右侧固定的叶节点单元格。
 
 ### `getCenterVisibleCells`
 
@@ -261,4 +259,4 @@ Returns all right pinned leaf cells in the row.
 getCenterVisibleCells: () => Cell < TData > []
 ```
 
-Returns all center pinned (unpinned) leaf cells in the row.
+返回行中所有中间固定（未固定）的叶节点单元格。

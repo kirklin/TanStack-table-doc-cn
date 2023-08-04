@@ -1,11 +1,11 @@
 ---
-title: Column Ordering
+title: 列排序
 id: column-ordering
 ---
 
-## State
+## 状态
 
-Column ordering state is stored on the table using the following shape:
+列排序状态以以下形式存储在表格中：
 
 ```tsx
 export type ColumnOrderTableState = {
@@ -15,7 +15,7 @@ export type ColumnOrderTableState = {
 export type ColumnOrderState = string[]
 ```
 
-## Table Options
+## 表格选项
 
 ### `onColumnOrderChange`
 
@@ -23,9 +23,9 @@ export type ColumnOrderState = string[]
 onColumnOrderChange?: OnChangeFn<ColumnOrderState>
 ```
 
-If provided, this function will be called with an `updaterFn` when `state.columnOrder` changes. This overrides the default internal state management, so you will need to persist the state change either fully or partially outside of the table.
+如果提供了此函数，当 `state.columnOrder` 发生变化时，将使用 `updaterFn` 调用它。这将覆盖默认的内部状态管理，因此您需要在表格外部完全或部分地持久化状态更改。
 
-## Table API
+## 表格 API
 
 ### `setColumnOrder`
 
@@ -33,7 +33,7 @@ If provided, this function will be called with an `updaterFn` when `state.column
 setColumnOrder: (updater: Updater<ColumnOrderState>) => void
 ```
 
-Sets or updates the `state.columnOrder` state.
+设置或更新 `state.columnOrder` 状态。
 
 ### `resetColumnOrder`
 
@@ -41,4 +41,4 @@ Sets or updates the `state.columnOrder` state.
 resetColumnOrder: (defaultState?: boolean) => void
 ```
 
-Resets the **columnOrder** state to `initialState.columnOrder`, or `true` can be passed to force a default blank state reset to `[]`.
+将 **columnOrder** 状态重置为 `initialState.columnOrder`，或者可以传递 `true` 强制将其重置为空白状态 `[]`。

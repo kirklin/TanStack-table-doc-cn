@@ -1,11 +1,11 @@
 ---
-title: Row Selection
+title: 行选择
 id: row-selection
 ---
 
-## State
+## 状态
 
-Row selection state is stored on the table using the following shape:
+行选择状态以以下形式存储在表格中：
 
 ```tsx
 export type RowSelectionState = Record<string, boolean>
@@ -15,7 +15,7 @@ export type RowSelectionTableState = {
 }
 ```
 
-## Table Options
+## 表格选项
 
 ### `enableRowSelection`
 
@@ -23,8 +23,8 @@ export type RowSelectionTableState = {
 enableRowSelection?: boolean | ((row: Row<TData>) => boolean)
 ```
 
-- Enables/disables row selection for all rows in the table OR
-- A function that given a row, returns whether to enable/disable row selection for that row
+- 启用/禁用表格中所有行的行选择，或者
+- 给定一行，返回是否启用/禁用该行的行选择的函数
 
 ### `enableMultiRowSelection`
 
@@ -32,8 +32,8 @@ enableRowSelection?: boolean | ((row: Row<TData>) => boolean)
 enableMultiRowSelection?: boolean | ((row: Row<TData>) => boolean)
 ```
 
-- Enables/disables multiple row selection for all rows in the table OR
-- A function that given a row, returns whether to enable/disable multiple row selection for that row's children/grandchildren
+- 启用/禁用表格中所有行的多行选择，或者
+- 给定一行，返回是否启用/禁用该行的多行选择的函数
 
 ### `enableSubRowSelection`
 
@@ -41,9 +41,9 @@ enableMultiRowSelection?: boolean | ((row: Row<TData>) => boolean)
 enableSubRowSelection?: boolean | ((row: Row<TData>) => boolean)
 ```
 
-Enables/disables automatic sub-row selection when a parent row is selected, or a function that enables/disables automatic sub-row selection for each row.
+启用/禁用在选择父行时自动选择子行，或者为每行启用/禁用自动选择子行的函数。
 
-(Use in combination with expanding or grouping features)
+（与展开或分组功能结合使用）
 
 ### `onRowSelectionChange`
 
@@ -51,9 +51,9 @@ Enables/disables automatic sub-row selection when a parent row is selected, or a
 onRowSelectionChange?: OnChangeFn<RowSelectionState>
 ```
 
-If provided, this function will be called with an `updaterFn` when `state.rowSelection` changes. This overrides the default internal state management, so you will need to persist the state change either fully or partially outside of the table.
+如果提供了此函数，当 `state.rowSelection` 发生变化时，将使用 `updaterFn` 调用该函数。这将覆盖默认的内部状态管理，因此您需要在表格外部完全或部分地持久化状态更改。
 
-## Table API
+## 表格 API
 
 ### `getToggleAllRowsSelectedHandler`
 
@@ -61,7 +61,7 @@ If provided, this function will be called with an `updaterFn` when `state.rowSel
 getToggleAllRowsSelectedHandler: () => (event: unknown) => void
 ```
 
-Returns a handler that can be used to toggle all rows in the table.
+返回一个处理程序，用于切换表格中所有行的选择状态。
 
 ### `getToggleAllPageRowsSelectedHandler`
 
@@ -69,7 +69,7 @@ Returns a handler that can be used to toggle all rows in the table.
 getToggleAllPageRowsSelectedHandler: () => (event: unknown) => void
 ```
 
-Returns a handler that can be used to toggle all rows on the current page.
+返回一个处理程序，用于切换当前页面上所有行的选择状态。
 
 ### `setRowSelection`
 
@@ -77,7 +77,7 @@ Returns a handler that can be used to toggle all rows on the current page.
 setRowSelection: (updater: Updater<RowSelectionState>) => void
 ```
 
-Sets or updates the `state.rowSelection` state.
+设置或更新 `state.rowSelection` 状态。
 
 ### `resetRowSelection`
 
@@ -85,7 +85,7 @@ Sets or updates the `state.rowSelection` state.
 resetRowSelection: (defaultState?: boolean) => void
 ```
 
-Resets the **rowSelection** state to the `initialState.rowSelection`, or `true` can be passed to force a default blank state reset to `{}`.
+将 **rowSelection** 状态重置为 `initialState.rowSelection`，或者可以传递 `true` 强制将其重置为空白状态 `{}`。
 
 ### `getIsAllRowsSelected`
 
@@ -93,7 +93,7 @@ Resets the **rowSelection** state to the `initialState.rowSelection`, or `true` 
 getIsAllRowsSelected: () => boolean
 ```
 
-Returns whether or not all rows in the table are selected.
+返回表格中是否选择了所有行。
 
 ### `getIsAllPageRowsSelected`
 
@@ -101,7 +101,7 @@ Returns whether or not all rows in the table are selected.
 getIsAllPageRowsSelected: () => boolean
 ```
 
-Returns whether or not all rows on the current page are selected.
+返回当前页面上是否选择了所有行。
 
 ### `getIsSomeRowsSelected`
 
@@ -109,7 +109,7 @@ Returns whether or not all rows on the current page are selected.
 getIsSomeRowsSelected: () => boolean
 ```
 
-Returns whether or not any rows in the table are selected.
+返回表格中是否选择了任何行。
 
 ### `getIsSomePageRowsSelected`
 
@@ -117,7 +117,7 @@ Returns whether or not any rows in the table are selected.
 getIsSomePageRowsSelected: () => boolean
 ```
 
-Returns whether or not any rows on the current page are selected.
+返回当前页面上是否选择了任何行。
 
 ### `toggleAllRowsSelected`
 
@@ -125,7 +125,7 @@ Returns whether or not any rows on the current page are selected.
 toggleAllRowsSelected: (value: boolean) => void
 ```
 
-Selects/deselects all rows in the table.
+选择/取消选择表格中的所有行。
 
 ### `toggleAllPageRowsSelected`
 
@@ -133,7 +133,7 @@ Selects/deselects all rows in the table.
 toggleAllPageRowsSelected: (value: boolean) => void
 ```
 
-Selects/deselects all rows on the current page.
+选择/取消选择当前页面上的所有行。
 
 ### `getPreSelectedRowModel`
 
@@ -159,7 +159,7 @@ getFilteredSelectedRowModel: () => RowModel<TData>
 getGroupedSelectedRowModel: () => RowModel<TData>
 ```
 
-## Row API
+## 行 API
 
 ### `getIsSelected`
 
@@ -167,7 +167,7 @@ getGroupedSelectedRowModel: () => RowModel<TData>
 getIsSelected: () => boolean
 ```
 
-Returns whether or not the row is selected.
+返回行是否被选择。
 
 ### `getIsSomeSelected`
 
@@ -175,7 +175,7 @@ Returns whether or not the row is selected.
 getIsSomeSelected: () => boolean
 ```
 
-Returns whether or not some of the row's sub rows are selected.
+返回行的某些子行是否被选择。
 
 ### `getCanSelect`
 
@@ -183,7 +183,7 @@ Returns whether or not some of the row's sub rows are selected.
 getCanSelect: () => boolean
 ```
 
-Returns whether or not the row can be selected.
+返回行是否可以选择。
 
 ### `getCanMultiSelect`
 
@@ -191,7 +191,7 @@ Returns whether or not the row can be selected.
 getCanMultiSelect: () => boolean
 ```
 
-Returns whether or not the row can multi-select.
+返回行是否可以多选。
 
 ### `getCanSelectSubRows`
 
@@ -199,7 +199,7 @@ Returns whether or not the row can multi-select.
 getCanSelectSubRows: () => boolean
 ```
 
-Returns whether or not the row can select sub rows automatically when the parent row is selected.
+返回行是否可以在选择父行时自动选择子行。
 
 ### `toggleSelected`
 
@@ -207,7 +207,7 @@ Returns whether or not the row can select sub rows automatically when the parent
 toggleSelected: (value?: boolean) => void
 ```
 
-Selects/deselects the row.
+选择/取消选择行。
 
 ### `getToggleSelectedHandler`
 
@@ -215,4 +215,4 @@ Selects/deselects the row.
 getToggleSelectedHandler: () => (event: unknown) => void
 ```
 
-Returns a handler that can be used to toggle the row.
+返回一个处理程序，用于切换行的选择状态。

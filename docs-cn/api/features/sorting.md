@@ -1,11 +1,11 @@
 ---
-title: Sorting
+title: 排序
 id: sorting
 ---
 
-## State
+## 状态
 
-Sorting state is stored on the table using the following shape:
+排序状态以以下形式存储在表格中：
 
 ```tsx
 export type SortDirection = 'asc' | 'desc'
@@ -22,32 +22,32 @@ export type SortingTableState = {
 }
 ```
 
-## Sorting Functions
+## 排序函数
 
-The following sorting functions are built-in to the table core:
+以下排序函数内置于表格核心：
 
 - `alphanumeric`
-  - Sorts by mixed alphanumeric values without case-sensitivity. Slower, but more accurate if your strings contain numbers that need to be naturally sorted.
+  - 对包含字母和数字的值进行排序，不区分大小写。速度较慢，但如果字符串中包含需要自然排序的数字，则更准确。
 - `alphanumericCaseSensitive`
-  - Sorts by mixed alphanumeric values with case-sensitivity. Slower, but more accurate if your strings contain numbers that need to be naturally sorted.
+  - 对包含字母和数字的值进行排序，区分大小写。速度较慢，但如果字符串中包含需要自然排序的数字，则更准确。
 - `text`
-  - Sorts by text/string values without case-sensitivity. Faster, but less accurate if your strings contain numbers that need to be naturally sorted.
+  - 对文本/字符串值进行排序，不区分大小写。速度较快，但如果字符串中包含需要自然排序的数字，则不够准确。
 - `textCaseSensitive`
-  - Sorts by text/string values with case-sensitivity. Faster, but less accurate if your strings contain numbers that need to be naturally sorted.
+  - 对文本/字符串值进行排序，区分大小写。速度较快，但如果字符串中包含需要自然排序的数字，则不够准确。
 - `datetime`
-  - Sorts by time, use this if your values are `Date` objects.
+  - 按时间排序，如果值是 `Date` 对象，请使用此选项。
 - `basic`
-  - Sorts using a basic/standard `a > b ? -1 : b < a ? 1 : 0` comparison. This is the fastest sorting function, but may not be the most accurate.
+  - 使用基本的 `a > b ? -1 : b < a ? 1 : 0` 比较进行排序。这是最快的排序函数，但可能不是最准确的。
 
-Every sorting function receives 2 rows and a column ID and are expected to compare the two rows using the column ID to return `-1`, `0`, or `1` in ascending order. Here's a cheat sheet:
+每个排序函数接收两行数据和一个列 ID，并使用列 ID 比较这两行数据，以升序返回 `-1`、`0` 或 `1`。下面是一个速查表：
 
-| Return | Ascending Order |
+| 返回值 | 升序排序 |
 | ------ | --------------- |
 | `-1`   | `a < b`         |
 | `0`    | `a === b`       |
 | `1`    | `a > b`         |
 
-This is the type signature for every sorting function:
+每个排序函数的类型签名如下：
 
 ```tsx
 export type SortingFn<TData extends AnyData> = {
@@ -55,15 +55,15 @@ export type SortingFn<TData extends AnyData> = {
 }
 ```
 
-#### Using Sorting Functions
+#### 使用排序函数
 
-Sorting functions can be used/referenced/defined by passing the following to `columnDefinition.sortingFn`:
+可以通过以下方式将排序函数用作 `columnDefinition.sortingFn` 的参数：
 
-- A `string` that references a built-in sorting function
-- A `string` that references a custom sorting functions provided via the `tableOptions.sortingFns` option
-- A function directly provided to the `columnDefinition.sortingFn` option
+- 一个字符串，引用[内置排序函数](#排序函数)
+- 一个字符串，引用通过 `tableOptions.sortingFns` 选项提供的自定义排序函数
+- 直接提供给 `columnDefinition.sortingFn` 选项的函数
 
-The final list of sorting functions available for the `columnDef.sortingFn` use the following type:
+`columnDef.sortingFn` 可用的最终排序函数列表使用以下类型：
 
 ```tsx
 export type SortingFnOption<TData extends AnyData> =
@@ -73,7 +73,7 @@ export type SortingFnOption<TData extends AnyData> =
   | SortingFn<TData>
 ```
 
-## Column Def Options
+## 列定义选项
 
 ### `sortingFn`
 
@@ -81,12 +81,12 @@ export type SortingFnOption<TData extends AnyData> =
 sortingFn?: SortingFn | keyof SortingFns | keyof BuiltInSortingFns
 ```
 
-The sorting function to use with this column.
+用于此列的排序函数。
 
-Options:
+选项：
 
-- A `string` referencing a [built-in sorting function](#sorting-functions))
-- A [custom sorting function](#sorting-functions)
+- 一个字符串，引用[内置排序函数](#排序函数)
+- 一个[自定义排序函数](#排序函数)
 
 ### `sortDescFirst`
 
@@ -94,7 +94,7 @@ Options:
 sortDescFirst?: boolean
 ```
 
-Set to `true` for sorting toggles on this column to start in the descending direction.
+设置为 `true`，以使此列的排序切换在降序方向开始。
 
 ### `enableSorting`
 
@@ -102,7 +102,7 @@ Set to `true` for sorting toggles on this column to start in the descending dire
 enableSorting?: boolean
 ```
 
-Enables/Disables sorting for this column.
+启用/禁用此列的排序。
 
 ### `enableMultiSort`
 
@@ -110,7 +110,7 @@ Enables/Disables sorting for this column.
 enableMultiSort?: boolean
 ```
 
-Enables/Disables multi-sorting for this column.
+启用/禁用此列的多重排序。
 
 ### `invertSorting`
 
@@ -118,22 +118,22 @@ Enables/Disables multi-sorting for this column.
 invertSorting?: boolean
 ```
 
-Inverts the order of the sorting for this column. This is useful for values that have an inverted best/worst scale where lower numbers are better, eg. a ranking (1st, 2nd, 3rd) or golf-like scoring
+反转此列的排序顺序。这对于具有倒置的最佳/最差比例的值很有用，其中较小的数字更好，例如排名（第1名、第2名、第3名）或类似高尔夫的记分。
 
 ### `sortUndefined`
 
 ```tsx
-sortUndefined?: false | -1 | 1 // defaults to false
+sortUndefined?: false | -1 | 1 // 默认为 false
 ```
 
 - `false`
-  - Undefined values will be considered tied and need to be sorted by the next colum filter or original index (which ever applies)
+  - 未定义的值将被视为并列，并需要按照下一个列过滤器或原始索引进行排序（以适用的方式）。
 - `-1`
-  - Undefined values will be sorted with higher priority (ascending)
+  - 未定义的值将以较高的优先级（升序）进行排序。
 - `1`
-  - Undefined values will be sorted with lower priority (descending)
+  - 未定义的值将以较低的优先级（降序）进行排序。
 
-## Column API
+## 列 API
 
 ### `getAutoSortingFn`
 
@@ -141,7 +141,7 @@ sortUndefined?: false | -1 | 1 // defaults to false
 getAutoSortingFn: () => SortingFn<TData>
 ```
 
-Returns a sorting function automatically inferred based on the columns values.
+根据列的值自动推断并返回排序函数。
 
 ### `getAutoSortDir`
 
@@ -149,7 +149,7 @@ Returns a sorting function automatically inferred based on the columns values.
 getAutoSortDir: () => SortDirection
 ```
 
-Returns a sort direction automatically inferred based on the columns values.
+根据列的值自动推断并返回排序方向。
 
 ### `getSortingFn`
 
@@ -157,7 +157,7 @@ Returns a sort direction automatically inferred based on the columns values.
 getSortingFn: () => SortingFn<TData>
 ```
 
-Returns the resolved sorting function to be used for this column
+返回用于此列的解析排序函数。
 
 ### `getNextSortingOrder`
 
@@ -165,7 +165,7 @@ Returns the resolved sorting function to be used for this column
 getNextSortingOrder: () => SortDirection | false
 ```
 
-Returns the next sorting order.
+返回下一个排序顺序。
 
 ### `getCanSort`
 
@@ -173,7 +173,7 @@ Returns the next sorting order.
 getCanSort: () => boolean
 ```
 
-Returns whether this column can be sorted.
+返回此列是否可以排序。
 
 ### `getCanMultiSort`
 
@@ -181,7 +181,7 @@ Returns whether this column can be sorted.
 getCanMultiSort: () => boolean
 ```
 
-Returns whether this column can be multi-sorted.
+返回此列是否可以进行多重排序。
 
 ### `getSortIndex`
 
@@ -189,7 +189,7 @@ Returns whether this column can be multi-sorted.
 getSortIndex: () => number
 ```
 
-Returns the index position of this column's sorting within the sorting state
+返回此列在排序状态中的索引位置。
 
 ### `getIsSorted`
 
@@ -197,7 +197,7 @@ Returns the index position of this column's sorting within the sorting state
 getIsSorted: () => false | SortDirection
 ```
 
-Returns whether this column is sorted.
+返回此列是否已排序。
 
 ### `clearSorting`
 
@@ -205,7 +205,7 @@ Returns whether this column is sorted.
 clearSorting: () => void
 ```
 
-Removes this column from the table's sorting state
+从表格的排序状态中移除此列。
 
 ### `toggleSorting`
 
@@ -213,7 +213,7 @@ Removes this column from the table's sorting state
 toggleSorting: (desc?: boolean, isMulti?: boolean) => void
 ```
 
-Toggles this columns sorting state. If `desc` is provided, it will force the sort direction to that value. If `isMulti` is provided, it will additivity multi-sort the column (or toggle it if it is already sorted).
+切换此列的排序状态。如果提供了 `desc`，它将强制使用该值作为排序方向。如果提供了 `isMulti`，它将对该列进行多重排序（如果已排序，则切换）。
 
 ### `getToggleSortingHandler`
 
@@ -221,9 +221,9 @@ Toggles this columns sorting state. If `desc` is provided, it will force the sor
 getToggleSortingHandler: () => undefined | ((event: unknown) => void)
 ```
 
-Returns a function that can be used to toggle this column's sorting state. This is useful for attaching a click handler to the column header.
+返回一个函数，可用于切换此列的排序状态。这对于将点击处理程序附加到列标题很有用。
 
-## Table Options
+## 表格选项
 
 ### `sortingFns`
 
@@ -231,8 +231,7 @@ Returns a function that can be used to toggle this column's sorting state. This 
 sortingFns?: Record<string, SortingFn>
 ```
 
-This option allows you to define custom sorting functions that can be referenced in a column's `sortingFn` option by their key.
-Example:
+此选项允许您定义自定义排序函数，并可以通过其键在列的 `sortingFn` 选项中引用。示例：
 
 ```tsx
 declare module '@tanstack/table-core' {
@@ -260,7 +259,7 @@ const table = useReactTable({
 manualSorting?: boolean
 ```
 
-Enables manual sorting for the table. If this is `true`, you will be expected to sort your data before it is passed to the table. This is useful if you are doing server-side sorting.
+启用表格的手动排序。如果为 `true`，则需要在将数据传递给表格之前对其进行排序。如果进行服务器端排序，这很有用。
 
 ### `onSortingChange`
 
@@ -268,7 +267,7 @@ Enables manual sorting for the table. If this is `true`, you will be expected to
 onSortingChange?: OnChangeFn<SortingState>
 ```
 
-If provided, this function will be called with an `updaterFn` when `state.sorting` changes. This overrides the default internal state management, so you will need to persist the state change either fully or partially outside of the table.
+如果提供了此函数，当 `state.sorting` 更改时，将使用 `updaterFn` 调用它。这将覆盖默认的内部状态管理，因此您需要在表格之外完全或部分地保持状态更改。
 
 ### `enableSorting`
 
@@ -276,7 +275,7 @@ If provided, this function will be called with an `updaterFn` when `state.sortin
 enableSorting?: boolean
 ```
 
-Enables/Disables sorting for the table.
+启用/禁用表格的排序。
 
 ### `enableSortingRemoval`
 
@@ -284,9 +283,7 @@ Enables/Disables sorting for the table.
 enableSortingRemoval?: boolean
 ```
 
-Enables/Disables the ability to remove sorting for the table.
-If `true` then changing sort order will circle like: 'none' -> 'desc' -> 'asc' -> 'none' -> ...
-If `false` then changing sort order will circle like: 'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ...
+启用/禁用删除表格的排序功能。如果为 `true`，则更改排序顺序将循环如下：'none' -> 'desc' -> 'asc' -> 'none' -> ... 如果为 `false`，则更改排序顺序将循环如下：'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ...
 
 ### `enableMultiRemove`
 
@@ -294,7 +291,7 @@ If `false` then changing sort order will circle like: 'none' -> 'desc' -> 'asc' 
 enableMultiRemove?: boolean
 ```
 
-Enables/disables the ability to remove multi-sorts
+启用/禁用删除多重排序的功能。
 
 ### `enableMultiSort`
 
@@ -302,7 +299,7 @@ Enables/disables the ability to remove multi-sorts
 enableMultiSort?: boolean
 ```
 
-Enables/Disables multi-sorting for the table.
+启用/禁用表格的多重排序。
 
 ### `sortDescFirst`
 
@@ -310,7 +307,7 @@ Enables/Disables multi-sorting for the table.
 sortDescFirst?: boolean
 ```
 
-If `true`, all sorts will default to descending as their first toggle state.
+如果为 `true`，则所有排序将默认为降序作为其第一个切换状态。
 
 ### `getSortedRowModel`
 
@@ -318,7 +315,7 @@ If `true`, all sorts will default to descending as their first toggle state.
 getSortedRowModel?: (table: Table<TData>) => () => RowModel<TData>
 ```
 
-This function is used to retrieve the sorted row model. If using server-side sorting, this function is not required. To use client-side sorting, pass the exported `getSortedRowModel()` from your adapter to your table or implement your own.
+此函数用于检索已排序的行模型。如果使用服务器端排序，则不需要此函数。要使用客户端排序，请将适配器导出的 `getSortedRowModel()` 传递给表格，或者自己实现。
 
 ### `maxMultiSortColCount`
 
@@ -326,7 +323,7 @@ This function is used to retrieve the sorted row model. If using server-side sor
 maxMultiSortColCount?: number
 ```
 
-Set a maximum number of columns that can be multi-sorted.
+设置可以进行多重排序的最大列数。
 
 ### `isMultiSortEvent`
 
@@ -334,7 +331,7 @@ Set a maximum number of columns that can be multi-sorted.
 isMultiSortEvent?: (e: unknown) => boolean
 ```
 
-Pass a custom function that will be used to determine if a multi-sort event should be triggered. It is passed the event from the sort toggle handler and should return `true` if the event should trigger a multi-sort.
+传递一个自定义函数，用于确定是否触发多重排序事件。它接收来自排序切换处理程序的事件，并应返回 `true`，如果事件应触发多重排序。
 
 ## Table API
 
@@ -344,7 +341,7 @@ Pass a custom function that will be used to determine if a multi-sort event shou
 setSorting: (updater: Updater<SortingState>) => void
 ```
 
-Sets or updates the `state.sorting` state.
+设置或更新 `state.sorting` 状态。
 
 ### `resetSorting`
 
@@ -352,7 +349,7 @@ Sets or updates the `state.sorting` state.
 resetSorting: (defaultState?: boolean) => void
 ```
 
-Resets the **sorting** state to `initialState.sorting`, or `true` can be passed to force a default blank state reset to `[]`.
+将 **sorting** 状态重置为 `initialState.sorting`，或者可以传递 `true` 强制将默认空状态重置为 `[]`。
 
 ### `getPreSortedRowModel`
 
@@ -360,7 +357,7 @@ Resets the **sorting** state to `initialState.sorting`, or `true` can be passed 
 getPreSortedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table before any sorting has been applied.
+返回在应用任何排序之前的表格的行模型。
 
 ### `getSortedRowModel`
 
@@ -368,4 +365,4 @@ Returns the row model for the table before any sorting has been applied.
 getSortedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table after sorting has been applied.
+返回应用排序后的表格的行模型。

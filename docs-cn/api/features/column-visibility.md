@@ -1,11 +1,11 @@
 ---
-title: Column Visibility
+title: 列可见性
 id: column-visibility
 ---
 
-## State
+## 状态
 
-Column visibility state is stored on the table using the following shape:
+列可见性状态存储在表格中，使用以下结构：
 
 ```tsx
 export type VisibilityState = Record<string, boolean>
@@ -15,7 +15,7 @@ export type VisibilityTableState = {
 }
 ```
 
-## Column Def Options
+## 列定义选项
 
 ### `enableHiding`
 
@@ -23,9 +23,9 @@ export type VisibilityTableState = {
 enableHiding?: boolean
 ```
 
-Enables/disables hiding the column
+启用/禁用隐藏列
 
-## Column API
+## 列 API
 
 ### `getCanHide`
 
@@ -33,7 +33,7 @@ Enables/disables hiding the column
 getCanHide: () => boolean
 ```
 
-Returns whether the column can be hidden
+返回列是否可以隐藏
 
 ### `getIsVisible`
 
@@ -41,7 +41,7 @@ Returns whether the column can be hidden
 getIsVisible: () => boolean
 ```
 
-Returns whether the column is visible
+返回列是否可见
 
 ### `toggleVisibility`
 
@@ -49,7 +49,7 @@ Returns whether the column is visible
 toggleVisibility: (value?: boolean) => void
 ```
 
-Toggles the column visibility
+切换列的可见性
 
 ### `getToggleVisibilityHandler`
 
@@ -57,9 +57,9 @@ Toggles the column visibility
 getToggleVisibilityHandler: () => (event: unknown) => void
 ```
 
-Returns a function that can be used to toggle the column visibility. This function can be used to bind to an event handler to a checkbox.
+返回一个函数，用于切换列的可见性。此函数可用于绑定到复选框的事件处理程序。
 
-## Table Options
+## 表格选项
 
 ### `onColumnVisibilityChange`
 
@@ -67,7 +67,7 @@ Returns a function that can be used to toggle the column visibility. This functi
 onColumnVisibilityChange?: OnChangeFn<VisibilityState>
 ```
 
-If provided, this function will be called with an `updaterFn` when `state.columnVisibility` changes. This overrides the default internal state management, so you will need to persist the state change either fully or partially outside of the table.
+如果提供了此函数，当 `state.columnVisibility` 发生变化时，将调用 `updaterFn`。这将覆盖默认的内部状态管理，因此您需要在表格外部完全或部分地持久化状态更改。
 
 ### `enableHiding`
 
@@ -75,9 +75,9 @@ If provided, this function will be called with an `updaterFn` when `state.column
 enableHiding?: boolean
 ```
 
-Enables/disables hiding of columns.
+启用/禁用列的隐藏。
 
-## Table API
+## 表格 API
 
 ### `getVisibleFlatColumns`
 
@@ -85,7 +85,7 @@ Enables/disables hiding of columns.
 getVisibleFlatColumns: () => Column < TData > []
 ```
 
-Returns a flat array of columns that are visible, including parent columns.
+返回一个包含可见列（包括父列）的扁平数组。
 
 ### `getVisibleLeafColumns`
 
@@ -93,7 +93,7 @@ Returns a flat array of columns that are visible, including parent columns.
 getVisibleLeafColumns: () => Column < TData > []
 ```
 
-Returns a flat array of leaf-node columns that are visible.
+返回一个包含可见的叶子节点列的扁平数组。
 
 ### `getLeftVisibleLeafColumns`
 
@@ -101,7 +101,7 @@ Returns a flat array of leaf-node columns that are visible.
 getLeftVisibleLeafColumns: () => Column < TData > []
 ```
 
-If column pinning, returns a flat array of leaf-node columns that are visible in the left portion of the table.
+如果有列固定，返回一个包含在表格左侧可见的叶子节点列的扁平数组。
 
 ### `getRightVisibleLeafColumns`
 
@@ -109,7 +109,7 @@ If column pinning, returns a flat array of leaf-node columns that are visible in
 getRightVisibleLeafColumns: () => Column < TData > []
 ```
 
-If column pinning, returns a flat array of leaf-node columns that are visible in the right portion of the table.
+如果有列固定，返回一个包含在表格右侧可见的叶子节点列的扁平数组。
 
 ### `getCenterVisibleLeafColumns`
 
@@ -117,7 +117,7 @@ If column pinning, returns a flat array of leaf-node columns that are visible in
 getCenterVisibleLeafColumns: () => Column < TData > []
 ```
 
-If column pinning, returns a flat array of leaf-node columns that are visible in the unpinned/center portion of the table.
+如果有列固定，返回一个包含在表格未固定/中间部分可见的叶子节点列的扁平数组。
 
 ### `setColumnVisibility`
 
@@ -125,7 +125,7 @@ If column pinning, returns a flat array of leaf-node columns that are visible in
 setColumnVisibility: (updater: Updater<VisibilityState>) => void
 ```
 
-Updates the column visibility state via an updater function or value
+通过更新函数或值更新列的可见性状态
 
 ### `resetColumnVisibility`
 
@@ -133,7 +133,7 @@ Updates the column visibility state via an updater function or value
 resetColumnVisibility: (defaultState?: boolean) => void
 ```
 
-Resets the column visibility state to the initial state. If `defaultState` is provided, the state will be reset to `{}`
+将列的可见性状态重置为初始状态。如果提供了 `defaultState`，状态将重置为 `{}`
 
 ### `toggleAllColumnsVisible`
 
@@ -141,7 +141,7 @@ Resets the column visibility state to the initial state. If `defaultState` is pr
 toggleAllColumnsVisible: (value?: boolean) => void
 ```
 
-Toggles the visibility of all columns
+切换所有列的可见性
 
 ### `getIsAllColumnsVisible`
 
@@ -149,7 +149,7 @@ Toggles the visibility of all columns
 getIsAllColumnsVisible: () => boolean
 ```
 
-Returns whether all columns are visible
+返回是否所有列都可见
 
 ### `getIsSomeColumnsVisible`
 
@@ -157,7 +157,7 @@ Returns whether all columns are visible
 getIsSomeColumnsVisible: () => boolean
 ```
 
-Returns whether some columns are visible
+返回是否有些列可见
 
 ### `getToggleAllColumnsVisibilityHandler`
 
@@ -165,4 +165,4 @@ Returns whether some columns are visible
 getToggleAllColumnsVisibilityHandler: () => ((event: unknown) => void)
 ```
 
-Returns a handler for toggling the visibility of all columns, meant to be bound to a `input[type=checkbox]` element.
+返回一个用于切换所有列可见性的处理程序，用于绑定到 `input[type=checkbox]` 元素。

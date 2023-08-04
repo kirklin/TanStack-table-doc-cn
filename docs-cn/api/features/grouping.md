@@ -1,11 +1,11 @@
 ---
-title: Grouping
+title: 分组
 id: grouping
 ---
 
-## State
+## 状态
 
-Grouping state is stored on the table using the following shape:
+分组状态以以下形式存储在表格中：
 
 ```tsx
 export type GroupingState = string[]
@@ -15,37 +15,37 @@ export type GroupingTableState = {
 }
 ```
 
-## Aggregation Functions
+## 聚合函数
 
-The following aggregation functions are built-in to the table core:
+表格核心内置了以下聚合函数：
 
 - `sum`
-  - Sums the values of a group of rows
+  - 对一组行的值求和
 - `min`
-  - Finds the minimum value of a group of rows
+  - 找到一组行的最小值
 - `max`
-  - Finds the maximum value of a group of rows
+  - 找到一组行的最大值
 - `extent`
-  - Finds the minimum and maximum values of a group of rows
+  - 找到一组行的最小值和最大值
 - `mean`
-  - Finds the mean/average value of a group of rows
+  - 找到一组行的平均值
 - `median`
-  - Finds the median value of a group of rows
+  - 找到一组行的中位数
 - `unique`
-  - Finds the unique values of a group of rows
+  - 找到一组行的唯一值
 - `uniqueCount`
-  - Finds the number of unique values of a group of rows
+  - 找到一组行的唯一值的数量
 - `count`
-  - Calculates the number of rows in a group
+  - 计算一组行的行数
 
-Every grouping function receives:
+每个聚合函数接收以下参数：
 
-- A function to retrieve the leaf values of the groups rows
-- A function to retrieve the immediate-child values of the groups rows
+- 用于获取分组行的叶子值的函数
+- 用于获取分组行的直接子值的函数
 
-and should return a value (usually primitive) to build the aggregated row model.
+并且应该返回一个值（通常是原始值），以构建聚合行模型。
 
-This is the type signature for every aggregation function:
+以下是每个聚合函数的类型签名：
 
 ```tsx
 export type AggregationFn<TData extends AnyData> = (
@@ -54,15 +54,15 @@ export type AggregationFn<TData extends AnyData> = (
 ) => any
 ```
 
-#### Using Aggregation Functions
+#### 使用聚合函数
 
-Aggregation functions can be used/referenced/defined by passing the following to `columnDefinition.aggregationFn`:
+可以通过将以下内容传递给 `columnDefinition.aggregationFn` 来使用/引用/定义聚合函数：
 
-- A `string` that references a built-in aggregation function
-- A `string` that references a custom aggregation functions provided via the `tableOptions.aggregationFns` option
-- A function directly provided to the `columnDefinition.aggregationFn` option
+- 引用内置聚合函数的 `string`
+- 引用通过 `tableOptions.aggregationFns` 选项提供的自定义聚合函数的 `string`
+- 直接提供给 `columnDefinition.aggregationFn` 选项的函数
 
-The final list of aggregation functions available for the `columnDef.aggregationFn` use the following type:
+`columnDefinition.aggregationFn` 可用的最终聚合函数列表使用以下类型：
 
 ```tsx
 export type AggregationFnOption<TData extends AnyData> =
@@ -72,7 +72,7 @@ export type AggregationFnOption<TData extends AnyData> =
   | AggregationFn<TData>
 ```
 
-## Column Def Options
+## 列定义选项
 
 ### `aggregationFn`
 
@@ -80,12 +80,12 @@ export type AggregationFnOption<TData extends AnyData> =
 aggregationFn?: AggregationFn | keyof AggregationFns | keyof BuiltInAggregationFns
 ```
 
-The aggregation function to use with this column.
+用于此列的聚合函数。
 
-Options:
+选项：
 
-- A `string` referencing a [built-in aggregation function](#aggregation-functions))
-- A [custom aggregation function](#aggregation-functions)
+- 引用[内置聚合函数](#聚合函数)的 `string`
+- [自定义聚合函数](#聚合函数)
 
 ### `aggregatedCell`
 
@@ -102,7 +102,7 @@ aggregatedCell?: Renderable<
 >
 ```
 
-The cell to display each row for the column if the cell is an aggregate. If a function is passed, it will be passed a props object with the context of the cell and should return the property type for your adapter (the exact type depends on the adapter being used).
+如果单元格是聚合的，则显示该列的每一行的单元格。如果传递了函数，则会传递一个带有单元格上下文的 props 对象，并应返回适配器的属性类型（具体类型取决于所使用的适配器）。
 
 ### `enableGrouping`
 
@@ -110,7 +110,7 @@ The cell to display each row for the column if the cell is an aggregate. If a fu
 enableGrouping?: boolean
 ```
 
-Enables/disables grouping for this column.
+启用/禁用此列的分组。
 
 ### `getGroupingValue`
 
@@ -118,9 +118,9 @@ Enables/disables grouping for this column.
 getGroupingValue?: (row: TData) => any
 ```
 
-Specify a value to be used for grouping rows on this column. If this option is not specified, the value derived from `accessorKey` / `accessorFn` will be used instead.
+指定用于在此列上分组行的值。如果未指定此选项，则将使用从 `accessorKey` / `accessorFn` 派生的值。
 
-## Column API
+## 列 API
 
 ### `aggregationFn`
 
@@ -128,7 +128,7 @@ Specify a value to be used for grouping rows on this column. If this option is n
 aggregationFn?: AggregationFnOption<TData>
 ```
 
-The resolved aggregation function for the column.
+列的解析聚合函数。
 
 ### `getCanGroup`
 
@@ -136,7 +136,7 @@ The resolved aggregation function for the column.
 getCanGroup: () => boolean
 ```
 
-Returns whether or not the column can be grouped.
+返回列是否可以分组。
 
 ### `getIsGrouped`
 
@@ -144,7 +144,7 @@ Returns whether or not the column can be grouped.
 getIsGrouped: () => boolean
 ```
 
-Returns whether or not the column is currently grouped.
+返回列当前是否已分组。
 
 ### `getGroupedIndex`
 
@@ -152,7 +152,7 @@ Returns whether or not the column is currently grouped.
 getGroupedIndex: () => number
 ```
 
-Returns the index of the column in the grouping state.
+返回列在分组状态中的索引。
 
 ### `toggleGrouping`
 
@@ -160,7 +160,7 @@ Returns the index of the column in the grouping state.
 toggleGrouping: () => void
 ```
 
-Toggles the grouping state of the column.
+切换列的分组状态。
 
 ### `getToggleGroupingHandler`
 
@@ -168,7 +168,7 @@ Toggles the grouping state of the column.
 getToggleGroupingHandler: () => () => void
 ```
 
-Returns a function that toggles the grouping state of the column. This is useful for passing to the `onClick` prop of a button.
+返回一个函数，用于切换列的分组状态。这对于传递给按钮的 `onClick` 属性非常有用。
 
 ### `getAutoAggregationFn`
 
@@ -176,7 +176,7 @@ Returns a function that toggles the grouping state of the column. This is useful
 getAutoAggregationFn: () => AggregationFn<TData> | undefined
 ```
 
-Returns the automatically inferred aggregation function for the column.
+返回列的自动推断聚合函数。
 
 ### `getAggregationFn`
 
@@ -184,7 +184,7 @@ Returns the automatically inferred aggregation function for the column.
 getAggregationFn: () => AggregationFn<TData> | undefined
 ```
 
-## Row API
+## 行 API
 
 ### `groupingColumnId`
 
@@ -192,7 +192,7 @@ getAggregationFn: () => AggregationFn<TData> | undefined
 groupingColumnId?: string
 ```
 
-If this row is grouped, this is the id of the column that this row is grouped by.
+如果此行已分组，则为此行分组的列的 ID。
 
 ### `groupingValue`
 
@@ -200,7 +200,7 @@ If this row is grouped, this is the id of the column that this row is grouped by
 groupingValue?: any
 ```
 
-If this row is grouped, this is the unique/shared value for the `groupingColumnId` for all of the rows in this group.
+如果此行已分组，则为此组中所有行的 `groupingColumnId` 的唯一/共享值。
 
 ### `getIsGrouped`
 
@@ -208,7 +208,7 @@ If this row is grouped, this is the unique/shared value for the `groupingColumnI
 getIsGrouped: () => boolean
 ```
 
-Returns whether or not the row is currently grouped.
+返回行当前是否已分组。
 
 ### `getGroupingValue`
 
@@ -216,9 +216,9 @@ Returns whether or not the row is currently grouped.
 getGroupingValue: (columnId: string) => unknown
 ```
 
-Returns the grouping value for any row and column (including leaf rows).
+返回任何行和列（包括叶子行）的分组值。
 
-## Table Options
+## 表格选项
 
 ### `aggregationFns`
 
@@ -226,8 +226,8 @@ Returns the grouping value for any row and column (including leaf rows).
 aggregationFns?: Record<string, AggregationFn>
 ```
 
-This option allows you to define custom aggregation functions that can be referenced in a column's `aggregationFn` option by their key.
-Example:
+此选项允许您定义自定义聚合函数，可以通过其键在列的 `aggregationFn` 选项中引用。
+示例：
 
 ```tsx
 declare module '@tanstack/table-core' {
@@ -244,7 +244,7 @@ const table = useReactTable({
   columns: [column],
   aggregationFns: {
     myCustomAggregation: (columnId, leafRows, childRows) => {
-      // return the aggregated value
+      // 返回聚合值
     },
   },
 })
@@ -256,7 +256,7 @@ const table = useReactTable({
 manualGrouping?: boolean
 ```
 
-Enables manual grouping. If this option is set to `true`, the table will not automatically group rows using `getGroupedRowModel()` and instead will expect you to manually group the rows before passing them to the table. This is useful if you are doing server-side grouping and aggregation.
+启用手动分组。如果将此选项设置为 `true`，则表格将不会使用 `getGroupedRowModel()` 自动分组行，而是期望您在将行传递给表格之前手动分组行。如果您正在进行服务器端分组和聚合，这将非常有用。
 
 ### `onGroupingChange`
 
@@ -264,7 +264,7 @@ Enables manual grouping. If this option is set to `true`, the table will not aut
 onGroupingChange?: OnChangeFn<GroupingState>
 ```
 
-If this function is provided, it will be called when the grouping state changes and you will be expected to manage the state yourself. You can pass the managed state back to the table via the `tableOptions.state.grouping` option.
+如果提供了此函数，当分组状态发生变化时将调用该函数，并且您将需要自行管理状态。您可以通过 `tableOptions.state.grouping` 选项将管理的状态传递回表格。
 
 ### `enableGrouping`
 
@@ -272,7 +272,7 @@ If this function is provided, it will be called when the grouping state changes 
 enableGrouping?: boolean
 ```
 
-Enables/disables grouping for all columns.
+启用/禁用所有列的分组。
 
 ### `getGroupedRowModel`
 
@@ -280,17 +280,17 @@ Enables/disables grouping for all columns.
 getGroupedRowModel?: (table: Table<TData>) => () => RowModel<TData>
 ```
 
-Returns the row model after grouping has taken place, but no further.
+返回在分组发生后但没有进一步处理之前的行模型。
 
 ### `groupedColumnMode`
 
 ```tsx
-groupedColumnMode?: false | 'reorder' | 'remove' // default: `reorder`
+groupedColumnMode?: false | 'reorder' | 'remove' // 默认值：`reorder`
 ```
 
-Grouping columns are automatically reordered by default to the start of the columns list. If you would rather remove them or leave them as-is, set the appropriate mode here.
+默认情况下，分组列会自动重新排序到列列表的开头。如果您希望删除它们或保留它们不变，请在此处设置适当的模式。
 
-## Table API
+## 表格 API
 
 ### `setGrouping`
 
@@ -298,7 +298,7 @@ Grouping columns are automatically reordered by default to the start of the colu
 setGrouping: (updater: Updater<GroupingState>) => void
 ```
 
-Sets or updates the `state.grouping` state.
+设置或更新 `state.grouping` 状态。
 
 ### `resetGrouping`
 
@@ -306,7 +306,7 @@ Sets or updates the `state.grouping` state.
 resetGrouping: (defaultState?: boolean) => void
 ```
 
-Resets the **grouping** state to `initialState.grouping`, or `true` can be passed to force a default blank state reset to `[]`.
+将**分组**状态重置为 `initialState.grouping`，或者可以传递 `true` 强制默认空状态重置为 `[]`。
 
 ### `getPreGroupedRowModel`
 
@@ -314,7 +314,7 @@ Resets the **grouping** state to `initialState.grouping`, or `true` can be passe
 getPreGroupedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table before any grouping has been applied.
+返回应用任何分组之前的表格的行模型。
 
 ### `getGroupedRowModel`
 
@@ -322,4 +322,4 @@ Returns the row model for the table before any grouping has been applied.
 getGroupedRowModel: () => RowModel<TData>
 ```
 
-Returns the row model for the table after grouping has been applied.
+返回应用分组后的表格的行模型。
