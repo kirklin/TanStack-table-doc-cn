@@ -5,6 +5,8 @@ dist
 dist-ssr
 *.local
 .cache
+public/build
+api
 
 ######################
 # Node
