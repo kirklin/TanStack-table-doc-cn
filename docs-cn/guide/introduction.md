@@ -29,7 +29,7 @@ TanStack Table是一个用于构建强大的表格和数据网格的**HeadlessUI
 
 ### 基于组件的表格库
 
-基于组件的表格库通常会为您提供一个功能丰富的即插即用解决方案，并提供完整的组件/标记，包括样式/主题。[AG Grid](https://ag-grid.com/react-data-grid/?utm_source=reacttable&utm_campaign=githubreacttable)就是这种类型的表格库的一个很好的例子。
+基于组件的表格库通常会为您提供一个功能丰富的即插即用解决方案，并提供完整的组件/标记，包括样式/主题。
 
 **优点：**
 
@@ -45,8 +45,6 @@ TanStack Table是一个用于构建强大的表格和数据网格的**HeadlessUI
 - 与框架适配器和平台高度耦合
 
 **如果您想要一个即插即用的表格，并且设计/捆绑包大小不是硬性要求**，那么您应该考虑使用基于组件的表格库。
-
-市面上有很多基于组件的表格库，但我们认为[AG Grid](https://ag-grid.com/react-data-grid/?utm_source=reacttable&utm_campaign=githubreacttable)是最佳选择，也是我们最喜欢的网格兄弟（不要告诉其他人 🤫）。
 
 ### Headless表格库
 
