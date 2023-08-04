@@ -33,7 +33,7 @@ title: 列定义
 下面是创建和使用列助手的示例：
 
 ```tsx
-// 定义行的形状
+// 定义行的TS类型
 type Person = {
   firstName: string
   lastName: string
@@ -119,7 +119,7 @@ const defaultColumns = [
 
 ## 对象键
 
-如果每个项都是具有以下形状的对象：
+如果每个项都是具有以下TS类型的对象：
 
 ```tsx
 type Person = {
@@ -147,7 +147,7 @@ columnHelper.accessor('firstName')
 
 ## 数组索引
 
-如果每个项都是具有以下形状的数组：
+如果每个项都是具有以下TS类型的数组：
 
 ```tsx
 type Sales = [Date, number]
@@ -167,7 +167,7 @@ columnHelper.accessor(1)
 
 ## 访问器函数
 
-如果每个项都是具有以下形状的对象：
+如果每个项都是具有以下TS类型的对象：
 
 ```tsx
 type Person = {
